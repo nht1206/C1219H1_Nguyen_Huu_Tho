@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Luyện tập switch case</title>
+</head>
+<body>
+<script>
+    let value = parseInt(prompt('Type a number', 0));
+    let exps = value === 0 ? 3 : value > 0;
+    switch (exps) {
+        case true:
+            alert(1);
+            break;
+        case false:
+            alert(-1);
+            break;
+        default:
+            alert(0);
+            break;
+    }
+</script>
+</body>
+</html>

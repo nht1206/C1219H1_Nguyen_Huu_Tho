@@ -18,18 +18,18 @@
         <td><input type="text" id="amount" /></td>
         <td>
             <select id="fromCurrency">
-                <option value="VNĐ" selected>VNĐ</option>
+                <option value="VND" selected>VNĐ</option>
                 <option value="USD">USD</option>
             </select>
         </td>
         <td>
             <select id="toCurrency">
-                <option value="VNĐ">VNĐ</option>
+                <option value="VND">VNĐ</option>
                 <option value="USD" selected>USD</option>
             </select>
         </td>
         <td>
-            <button onclick="convert()">Convert</button>
+            <button type="button" onclick="convert()">Convert</button>
         </td>
     </tr>
     </tbody>
@@ -40,12 +40,12 @@
         let amount = document.getElementById("amount").value;
         amount = parseInt(amount);
         var fromCurrencyOption = document.getElementById("fromCurrency");
-        var fromCurrency = fromCurrencyOption.options[fromCurrencyOption.selectedIndex].text;
+        var fromCurrency = fromCurrencyOption.options[fromCurrencyOption.selectedIndex].value;
         var toCurrencyOption = document.getElementById("toCurrency");
-        var toCurrency = toCurrencyOption.options[toCurrencyOption.selectedIndex].text;
+        var toCurrency = toCurrencyOption.options[toCurrencyOption.selectedIndex].value;
         document.getElementById("result").innerHTML = fromCurrency;
         if (fromCurrency === "USD"){
-            if (toCurrency === "VNĐ"){
+            if (toCurrency === "VND"){
                 document.getElementById("result").innerHTML = "Result: " + amount*23000 + " " + toCurrency;
             }
         } else {
