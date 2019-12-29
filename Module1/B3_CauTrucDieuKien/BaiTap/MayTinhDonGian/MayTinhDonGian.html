@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Máy tính đơn giản</title>
+</head>
+<style>
+    .caculator {
+        height: 300px;
+        width: 300px;
+    }
+    button {
+        height: 50px;
+        width: 50px;
+    }
+    input {
+        width: 250px;
+    }
+</style>
+<body>
+<table class="caculator">
+    <caption><input class="input" id="input"></caption>
+    <tr>
+        <td><button value="1" onclick="clickButton(event)"> 1 </button></td>
+        <td><button value="2" onclick="clickButton(event)"> 2 </button></td>
+        <td><button value="3" onclick="clickButton(event)"> 3 </button></td>
+        <td><button value="+" onclick="clickButton(event)"> + </button></td>
+    </tr>
+    <tr>
+        <td><button value="4" onclick="clickButton(event)"> 4 </button></td>
+        <td><button value="5" onclick="clickButton(event)"> 5 </button></td>
+        <td><button value="6" onclick="clickButton(event)"> 6 </button></td>
+        <td><button value="-" onclick="clickButton(event)"> - </button></td>
+    </tr>
+    <tr>
+        <td><button value="7" onclick="clickButton(event)"> 7 </button></td>
+        <td><button value="8" onclick="clickButton(event)"> 8 </button></td>
+        <td><button value="9" onclick="clickButton(event)"> 9 </button></td>
+        <td><button value="*" onclick="clickButton(event)"> * </button></td>
+    </tr>
+    <tr>
+        <td><button value="C" onclick="clickButton(event)"> C </button></td>
+        <td><button value="0" onclick="clickButton(event)"> 0 </button></td>
+        <td><button value="="onclick="clickButton(event)"> = </button></td>
+        <td><button value="/" onclick="clickButton(event)"> / </button></td>
+    </tr>
+</table>
+</body>
+<script>
+    function clickButton(e) {
+        let result = 0;
+        if (e.toElement.value === 'C') {
+            document.getElementById("input").value = "";
+        } else if (e.toElement.value === '=') {
+            let exps = document.getElementById("input").value;
+            console.log(calculate(exps));
+        } else {
+            switch (e.toElement.value) {
+                case '+':
+                    result += parseInt(document.getElementById("input").value);
+                    document.getElementById("input").value = "";
+                    console.log(result);
+                    break;
+                case '-':
+                    result -= parseInt(document.getElementById("input").value);
+                    document.getElementById("input").value = "";
+                    break;
+                case '*':
+                    result *= parseInt(document.getElementById("input").value);
+                    document.getElementById("input").value = "";
+                    break;
+                case '/':
+                    result /= parseInt(document.getElementById("input").value);
+                    document.getElementById("input").value = "";
+                    break;
+                default:
+                    document.getElementById("input").value += e.toElement.value;
+            }
+        }
+    }
+</script>
+</html>
