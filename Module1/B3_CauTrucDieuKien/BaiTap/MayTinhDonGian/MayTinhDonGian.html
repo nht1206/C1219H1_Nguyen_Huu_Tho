@@ -63,10 +63,9 @@
     let isEnd = false;
     function calculate(e) {
         if(isEnd){
-            inputString.value = '0';
-            isEnd = false;
-            arrayNum = [];
+            newNumber = arrayNum[0];
             arrayNumIndex = 0;
+            isEnd = false;
         }
         if(inputString.value === '0'){
             inputString.value = '';
