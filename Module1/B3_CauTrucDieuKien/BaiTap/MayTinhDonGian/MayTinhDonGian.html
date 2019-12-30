@@ -21,60 +21,129 @@
 <table class="caculator">
     <caption><input class="input" id="input"></caption>
     <tr>
-        <td><button value="1" onclick="clickButton(event)"> 1 </button></td>
-        <td><button value="2" onclick="clickButton(event)"> 2 </button></td>
-        <td><button value="3" onclick="clickButton(event)"> 3 </button></td>
-        <td><button value="+" onclick="clickButton(event)"> + </button></td>
+        <td><button value="1" onclick="calculate(this)"> 1 </button></td>
+        <td><button value="2" onclick="calculate(this)"> 2 </button></td>
+        <td><button value="3" onclick="calculate(this)"> 3 </button></td>
+        <td><button value="+" onclick="calculate(this)"> + </button></td>
     </tr>
     <tr>
-        <td><button value="4" onclick="clickButton(event)"> 4 </button></td>
-        <td><button value="5" onclick="clickButton(event)"> 5 </button></td>
-        <td><button value="6" onclick="clickButton(event)"> 6 </button></td>
-        <td><button value="-" onclick="clickButton(event)"> - </button></td>
+        <td><button value="4" onclick="calculate(this)"> 4 </button></td>
+        <td><button value="5" onclick="calculate(this)"> 5 </button></td>
+        <td><button value="6" onclick="calculate(this)"> 6 </button></td>
+        <td><button value="-" onclick="calculate(this)"> - </button></td>
     </tr>
     <tr>
-        <td><button value="7" onclick="clickButton(event)"> 7 </button></td>
-        <td><button value="8" onclick="clickButton(event)"> 8 </button></td>
-        <td><button value="9" onclick="clickButton(event)"> 9 </button></td>
-        <td><button value="*" onclick="clickButton(event)"> * </button></td>
+        <td><button value="7" onclick="calculate(this)"> 7 </button></td>
+        <td><button value="8" onclick="calculate(this)"> 8 </button></td>
+        <td><button value="9" onclick="calculate(this)"> 9 </button></td>
+        <td><button value="*" onclick="calculate(this)"> * </button></td>
     </tr>
     <tr>
-        <td><button value="C" onclick="clickButton(event)"> C </button></td>
-        <td><button value="0" onclick="clickButton(event)"> 0 </button></td>
-        <td><button value="="onclick="clickButton(event)"> = </button></td>
-        <td><button value="/" onclick="clickButton(event)"> / </button></td>
+        <td><button value="C" onclick="calculate(this)"> C </button></td>
+        <td><button value="0" onclick="calculate(this)"> 0 </button></td>
+        <td><button value="="onclick="calculate(this)"> = </button></td>
+        <td><button value="/" onclick="calculate(this)"> / </button></td>
     </tr>
 </table>
 </body>
 <script>
-    function clickButton(e) {
-        let result = 0;
-        if (e.toElement.value === 'C') {
-            document.getElementById("input").value = "";
-        } else if (e.toElement.value === '=') {
-            let exps = document.getElementById("input").value;
-            console.log(calculate(exps));
+    let operators = ["+", "-", "*", "/"];
+    let numbers = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+    let inputString = document.getElementById("input");
+    if(inputString.value === ''){
+        inputString.value = '0';
+    }
+    let oldExpression = '';
+    let newNumber = '';
+    let arrayNum = [];
+    let arrayNumIndex = 0;
+    let arrayOptr = [];
+    let arrayOptrIndex = 0;
+    let isOptrChanged = false;
+    let isEnd = false;
+    function calculate(e) {
+        if(isEnd){
+            inputString.value = '0';
+            isEnd = false;
+        }
+        if(inputString.value === '0'){
+            inputString.value = '';
+        }
+        if(oldExpression === '' && newNumber === ''){
+            oldExpression = inputString.value;
+        }
+        if(numbers.indexOf(e.value) !== -1){
+            newNumber += e.value;
+            inputString.value = oldExpression + newNumber;
+            isOptrChanged = false;
+        }
+        else if(operators.indexOf(e.value) !== -1) {
+            if (isOptrChanged) {
+                arrayOptrIndex[arrayOptrIndex - 1] = e.value;
+                inputString.value = inputString.value.substring(0, inputString.value.length - 1) + e.value;
+            } else {
+                arrayNum[arrayNumIndex] = parseFloat(newNumber);
+                arrayNumIndex++;
+                arrayOptr[arrayOptrIndex] = e.value;
+                arrayOptrIndex++;
+                inputString.value += e.value;
+            }
+            isOptrChanged = true;
+            oldExpression = inputString.value;
+            newNumber = '';
+        } else if (e.value === 'C') {
+            inputString.value = '0';
+            newNumber = '';
+            oldExpression = '';
         } else {
-            switch (e.toElement.value) {
-                case '+':
-                    result += parseInt(document.getElementById("input").value);
-                    document.getElementById("input").value = "";
-                    console.log(result);
-                    break;
-                case '-':
-                    result -= parseInt(document.getElementById("input").value);
-                    document.getElementById("input").value = "";
-                    break;
-                case '*':
-                    result *= parseInt(document.getElementById("input").value);
-                    document.getElementById("input").value = "";
-                    break;
-                case '/':
-                    result /= parseInt(document.getElementById("input").value);
-                    document.getElementById("input").value = "";
-                    break;
-                default:
-                    document.getElementById("input").value += e.toElement.value;
+            if(newNumber){
+                arrayNum[arrayNumIndex] = parseFloat(newNumber);
+                arrayNumIndex++;
+            }
+            for(let i = 0; i < arrayOptrIndex; i++){
+                if(arrayOptr[i] === '/' || arrayOptr[i] === '*'){
+                    let lastNum = arrayNum[i];
+                    let nextNum = arrayNum[i + 1];
+                    let result;
+                    if (arrayOptr[i] === '*'){
+                        result = lastNum * nextNum;
+                    }
+                    else if (nextNum === 0){
+                        inputString.value = '0';
+                    }
+                    else {
+                        result = lastNum / nextNum;
+                    }
+                    arrayNum[i] = result;
+                    arrayNum.splice(i + 1, 1);
+                    arrayNumIndex--;
+                    arrayOptr.splice(i, 1);
+                    arrayOptrIndex--;
+                    i--;
+                }
+                for(let i = 0; i < arrayOptrIndex; i++) {
+                    let lastNum = arrayNum[i];
+                    let nextNum = arrayNum[i + 1];
+                    let result;
+                    if (arrayOptr[i] === '+'){
+                        result = lastNum + nextNum;
+                    }
+                    else {
+                        result = lastNum - nextNum;
+                    }
+                    arrayNum[i] = result;
+                    arrayNum.splice(i + 1, 1);
+                    arrayNumIndex--;
+                    arrayOptr.splice(i, 1);
+                    arrayOptrIndex--;
+                    i--;
+                }
+                inputString.value = arrayNum[0];
+                newNumber = '';
+                oldExpression = '';
+                arrayNum = [];
+                arrayOptr = [];
+                isEnd = true;
             }
         }
     }
