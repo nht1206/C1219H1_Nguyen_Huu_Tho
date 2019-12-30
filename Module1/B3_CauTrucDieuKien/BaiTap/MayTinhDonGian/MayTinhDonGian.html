@@ -65,6 +65,8 @@
         if(isEnd){
             inputString.value = '0';
             isEnd = false;
+            arrayNum = [];
+            arrayNumIndex = 0;
         }
         if(inputString.value === '0'){
             inputString.value = '';
@@ -121,30 +123,28 @@
                     arrayOptrIndex--;
                     i--;
                 }
-                for(let i = 0; i < arrayOptrIndex; i++) {
-                    let lastNum = arrayNum[i];
-                    let nextNum = arrayNum[i + 1];
-                    let result;
-                    if (arrayOptr[i] === '+'){
-                        result = lastNum + nextNum;
-                    }
-                    else {
-                        result = lastNum - nextNum;
-                    }
-                    arrayNum[i] = result;
-                    arrayNum.splice(i + 1, 1);
-                    arrayNumIndex--;
-                    arrayOptr.splice(i, 1);
-                    arrayOptrIndex--;
-                    i--;
-                }
-                inputString.value = arrayNum[0];
-                newNumber = '';
-                oldExpression = '';
-                arrayNum = [];
-                arrayOptr = [];
-                isEnd = true;
             }
+            for(let i = 0; i < arrayOptrIndex; i++) {
+                let lastNum = arrayNum[i];
+                let nextNum = arrayNum[i + 1];
+                let result;
+                if (arrayOptr[i] === '+'){
+                    result = lastNum + nextNum;
+                }
+                else {
+                    result = lastNum - nextNum;
+                }
+                arrayNum[i] = result;
+                arrayNum.splice(i + 1, 1);
+                arrayNumIndex--;
+                arrayOptr.splice(i, 1);
+                arrayOptrIndex--;
+                i--;
+            }
+            inputString.value = arrayNum[0];
+            newNumber = '';
+            oldExpression = '';
+            isEnd = true;
         }
     }
 </script>
