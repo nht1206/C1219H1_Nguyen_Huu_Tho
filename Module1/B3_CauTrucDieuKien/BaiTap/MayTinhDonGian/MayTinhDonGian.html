@@ -5,9 +5,14 @@
     <title>Máy tính đơn giản</title>
 </head>
 <style>
-    .caculator {
+    .caculator table {
         height: 300px;
         width: 300px;
+    }
+    .caculator {
+        height: 310px;
+        width: 290px;
+        border: 3px solid #ffc78f;
     }
     button {
         height: 50px;
@@ -18,33 +23,35 @@
     }
 </style>
 <body>
-<table class="caculator">
-    <caption><input class="input" id="input"></caption>
-    <tr>
-        <td><button value="1" onclick="calculate(this)"> 1 </button></td>
-        <td><button value="2" onclick="calculate(this)"> 2 </button></td>
-        <td><button value="3" onclick="calculate(this)"> 3 </button></td>
-        <td><button value="+" onclick="calculate(this)"> + </button></td>
-    </tr>
-    <tr>
-        <td><button value="4" onclick="calculate(this)"> 4 </button></td>
-        <td><button value="5" onclick="calculate(this)"> 5 </button></td>
-        <td><button value="6" onclick="calculate(this)"> 6 </button></td>
-        <td><button value="-" onclick="calculate(this)"> - </button></td>
-    </tr>
-    <tr>
-        <td><button value="7" onclick="calculate(this)"> 7 </button></td>
-        <td><button value="8" onclick="calculate(this)"> 8 </button></td>
-        <td><button value="9" onclick="calculate(this)"> 9 </button></td>
-        <td><button value="*" onclick="calculate(this)"> * </button></td>
-    </tr>
-    <tr>
-        <td><button value="C" onclick="calculate(this)"> C </button></td>
-        <td><button value="0" onclick="calculate(this)"> 0 </button></td>
-        <td><button value="="onclick="calculate(this)"> = </button></td>
-        <td><button value="/" onclick="calculate(this)"> / </button></td>
-    </tr>
-</table>
+<div class="caculator">
+    <table>
+        <caption><input class="input" id="input"></caption>
+        <tr>
+            <td><button value="1" onclick="calculate(this)"> 1 </button></td>
+            <td><button value="2" onclick="calculate(this)"> 2 </button></td>
+            <td><button value="3" onclick="calculate(this)"> 3 </button></td>
+            <td><button value="+" onclick="calculate(this)"> + </button></td>
+        </tr>
+        <tr>
+            <td><button value="4" onclick="calculate(this)"> 4 </button></td>
+            <td><button value="5" onclick="calculate(this)"> 5 </button></td>
+            <td><button value="6" onclick="calculate(this)"> 6 </button></td>
+            <td><button value="-" onclick="calculate(this)"> - </button></td>
+        </tr>
+        <tr>
+            <td><button value="7" onclick="calculate(this)"> 7 </button></td>
+            <td><button value="8" onclick="calculate(this)"> 8 </button></td>
+            <td><button value="9" onclick="calculate(this)"> 9 </button></td>
+            <td><button value="*" onclick="calculate(this)"> * </button></td>
+        </tr>
+        <tr>
+            <td><button value="C" onclick="calculate(this)"> C </button></td>
+            <td><button value="0" onclick="calculate(this)"> 0 </button></td>
+            <td><button value="="onclick="calculate(this)"> = </button></td>
+            <td><button value="/" onclick="calculate(this)"> / </button></td>
+        </tr>
+    </table>
+</div>
 </body>
 <script>
     let operators = ["+", "-", "*", "/"];
@@ -65,7 +72,6 @@
         if(isEnd){
             newNumber = arrayNum[0];
             arrayNumIndex = 0;
-            isEnd = false;
         }
         if(inputString.value === '0'){
             inputString.value = '';
@@ -74,6 +80,10 @@
             oldExpression = inputString.value;
         }
         if(numbers.indexOf(e.value) !== -1){
+            if(isEnd){
+                newNumber = '';
+                isEnd = false;
+            }
             newNumber += e.value;
             inputString.value = oldExpression + newNumber;
             isOptrChanged = false;
