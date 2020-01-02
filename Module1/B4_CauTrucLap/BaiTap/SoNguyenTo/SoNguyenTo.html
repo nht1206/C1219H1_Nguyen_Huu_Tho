@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Số nguyên tố</title>
+</head>
+<body>
+<h2>JavaScript Loops</h2>
+<p id="demo"></p>
+<script>
+    function isPrimeNumber(n){
+        if (n == 1 || n == 0){
+            return false;
+        }
+        for (let i = 2; i <= Math.sqrt(n); i++){
+            if (n % i == 0){
+                return false;
+            }
+        }
+        return true;
+    }
+    let number = prompt("enter any number: ");
+    let text = "";
+    let i = 0;
+    while (number > 0){
+        if(isPrimeNumber(i)){
+            text += i + " ";
+            number--;
+        }
+        i++;
+    }
+    document.getElementById("demo").innerHTML = text;
+</script>
+</body>
+</html>
