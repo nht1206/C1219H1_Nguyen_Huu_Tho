@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Game puzzle</title>
+</head>
+<style>
+    html, body {
+        margin: 0;
+        padding: 0;
+    }
+
+    .container-fluid {
+        max-width: 940px;
+    }
+
+    .puzzles {
+        margin-top: 1em;
+        margin: auto;
+    }
+
+    img {
+        display: block;
+        margin: 1em;
+        padding: 0.2em;
+        box-shadow: 2px 3px 3px black;
+        width: 600px;
+        height: 150px;
+    }
+    .correctImg {
+        display: block;
+        margin: 1em;
+        padding: 0.2em;
+        box-shadow: 2px 3px 3px red;
+        width: 600px;
+        height: 150px;
+    }
+    .incorrectImg {
+        display: block;
+        margin: 1em;
+        padding: 0.2em;
+        box-shadow: 2px 3px 3px black;
+        width: 600px;
+        height: 150px;
+    }
+</style>
+<body>
+<div class="container-fluid">
+    <div class="puzzles">
+        <img class="img" id="img1" src="" alt=""/>
+        <img class="img" id="img2" src="" alt=""/>
+        <img class="img" id="img3" src="" alt=""/>
+        <img class="img" id="img4" src="" alt=""/>
+        <img class="img" id="img5" src="" alt=""/>
+    </div>
+</div>
+</body>
+<script src="game.js"></script>
+</html>
