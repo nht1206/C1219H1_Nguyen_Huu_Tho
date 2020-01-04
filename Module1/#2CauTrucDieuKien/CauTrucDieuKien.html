@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Biến, kiểu dữ liệu và toán tử</title>
+</head>
+<style>
+    /* Style inputs with type="text", select elements and textareas */
+    input[type=text], select, textarea {
+        width: 100%; /* Full width */
+        padding: 12px; /* Some padding */
+        border: 1px solid #ccc; /* Gray border */
+        border-radius: 4px; /* Rounded borders */
+        box-sizing: border-box; /* Make sure that padding and width stays in place */
+        margin-top: 6px; /* Add a top margin */
+        margin-bottom: 16px; /* Bottom margin */
+        resize: vertical /* Allow the user to vertically resize the textarea (not horizontally) */;
+    }
+
+    /* Style the submit button with a specific background color etc */
+    input[type=button] {
+        background-color: #4CAF50;
+        color: white;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    /* When moving the mouse over the submit button, add a darker green color */
+    input[type=submit]:hover {
+        background-color: #45a049;
+    }
+
+    /* Add a background color and some padding around the form */
+    .container {
+        border-radius: 5px;
+        background-color: #f2f2f2;
+        padding: 20px;
+        width: 300px;
+    }
+</style>
+<body>
+<form>
+    <div class="container">
+        <label for="nameCustomer">Customer's name: </label>
+        <input readonly type="text" id="nameCustomer">
+        <label for="idCard">ID: </label>
+        <input readonly type="text" id="idCard">
+        <label for="birthdayCustomer">Customer's birthday: </label>
+        <input readonly type="text" id="birthdayCustomer">
+        <label for="emailCustomer">Customer's birthday: </label>
+        <input readonly type="text" id="emailCustomer">
+        <label for="typeCustomer">Customer type: </label>
+        <input readonly type="text" id="typeCustomer">
+        <label for="addressCustomer">Customer type: </label>
+        <input readonly type="text" id="addressCustomer">
+        <label for="numberOfAccompanying">Number of accompanying: </label>
+        <input readonly type="text" id="numberOfAccompanying">
+        <label for="typeRoom">Type room: </label>
+        <input readonly type="text" id="typeRoom">
+        <label for="typeService">Type service: </label>
+        <input readonly type="text" id="typeService">
+        <label for="rentDays">Rent days: </label>
+        <input readonly type="text" id="rentDays">
+        <input onclick="assignValueToInput()" value="Show information" type="button">
+        <input id="edit" onclick="clickEdit()" type="button" value="Edit">
+    </div>
+</form>
+<script>
+    let nameCustomer = document.getElementById("nameCustomer");
+    let idCard = document.getElementById("idCard");
+    let birthdayCustomer = document.getElementById("birthdayCustomer");
+    let emailCustomer = document.getElementById("emailCustomer");
+    let addressCustomer = document.getElementById("addressCustomer");
+    let typeCustomer = document.getElementById("typeCustomer");
+    let numberOfAccompanying = document.getElementById("numberOfAccompanying");
+    let typeRoom = document.getElementById("typeRoom");
+    let typeService = document.getElementById("typeService");
+    let rentDays = document.getElementById("rentDays");
+    let buttonEdit = document.getElementById("edit");
+    let customer = {};
+    customer.name = "Nguyen Huu Tho";
+    customer.idCard = "123456";
+    customer.birthday = "12/06/1999";
+    customer.email = "nghuutho74@gmail.com";
+    customer.address = "Da Nang";
+    customer.type = "Diamond";
+    customer.typeRoom = "sad";
+    customer.typeService = "Villa";
+    customer.rentDays = 3;
+    customer.numberOfAccompying = 1;
+    if (customer.typeService === "Villa"){
+        customer.roomCost = 500;
+    } else if (customer.typeService === "House"){
+        customer.roomCost = 300;
+    } else {
+        customer.roomCost = 100;
+    }
+    let discount = 0;
+    if (customer.address === "Da Nang") {
+        discount += 20;
+    } else if (customer.address === "Hue"){
+        discount += 10;
+    } else {
+        discount += 5;
+    }
+    if (customer.rentDays > 7) {
+        discount += 30;
+    } else if (customer.rentDays <= 5) {
+        discount += 20;
+    } else {
+        discount += 10;
+    }
+    if (customer.type === "Diamond") {
+        discount += 15;
+    } else if (customer.type === "Platium") {
+        discount += 10;
+    } else if (customer.type === "Gold") {
+        discount += 5;
+    } else if (customer.type === "Silver ") {
+        discount += 2;
+    }
+    let currentYear = new Date().getFullYear();
+    let birthday = new Date(customer.birthday).getFullYear();
+    let ageCustomer = currentYear - birthday;
+    if (ageCustomer > 30 && customer.address === "Da Nang"){
+        discount += 2;
+    } else if (ageCustomer > 20 && customer.address === "Da Nang") {
+        discount += 1;
+    }
+
+    customer.totalCost = customer.roomCost*customer.rentDays - discount;
+
+
+    function assignValueToInput() {
+        nameCustomer.value = customer.name;
+        idCard.value = customer.idCard;
+        birthdayCustomer.value = customer.birthday;
+        emailCustomer.value = customer.email;
+        addressCustomer.value = customer.address;
+        typeCustomer.value = customer.type;
+        typeRoom.value = customer.typeRoom;
+        typeService.value = customer.typeService;
+        rentDays.value = customer.rentDays;
+        numberOfAccompanying.value = customer.numberOfAccompying;
+    }
+
+    function setReadOnly(value) {
+        nameCustomer.readOnly = value;
+        idCard.readOnly = value;
+        birthdayCustomer.readOnly = value;
+        emailCustomer.readOnly = value;
+        addressCustomer.readOnly = value;
+        typeService.readOnly = value;
+        typeCustomer.readOnly = value;
+        typeRoom.readOnly = value;
+        rentDays.readOnly = value;
+        numberOfAccompanying.readOnly = value;
+    }
+
+    function showCustumerInformation() {
+        alert("Thông tin khách hàng : \n" +
+            "Tên khách hàng: " + customer.name +
+            "\nId card: " + customer.idCard +
+            "\nNgày sinh: " + customer.birthday +
+            "\nEmail: " + customer.email +
+            "\nĐịa chỉ: " + customer.address +
+            "\nLoại khách hàng: " + customer.type +
+            "\nSố lượng đi kèm: " + customer.numberOfAccompying +
+            "\nLoại phòng: " + customer.typeRoom +
+            "\nLoại phục vụ: " + customer.typeService +
+            "\nSố ngày thuê: " + customer.rentDays +
+            "\nTổng thanh toán: " + customer.totalCost
+        );
+    }
+
+    function getUpdatedValue() {
+        customer.name = nameCustomer.value;
+        customer.idCard = idCard.value;
+        customer.birthday = birthdayCustomer.value;
+        customer.email = emailCustomer.value;
+        customer.address = addressCustomer.value;
+        customer.type = typeCustomer.value;
+        customer.typeRoom = typeRoom.value;
+        customer.typeService = typeService.value;
+        customer.rentDays = rentDays.value;
+        customer.numberOfAccompying = numberOfAccompanying.value;
+    }
+
+    function clickEdit() {
+        if (buttonEdit.value === "Edit") {
+            setReadOnly(false);
+            buttonEdit.value = "Update";
+        } else {
+            setReadOnly(true);
+            buttonEdit.value = "Edit";
+            getUpdatedValue();
+            showCustumerInformation();
+        }
+    }
+</script>
+</body>
+</html>

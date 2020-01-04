@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+<h3>Caro Game Simple</h3>
+<p id="carogame" />
+<p id="result"/>
+</body>
+<script>
+    let b = document.getElementById("carogame");
+    let result = document.getElementById("result");
+    let board = [];
+    let data = "";
+    for (let i = 0; i < 5; i++) {
+        board[i] = new Array(" . ", " . ", " . ", " . ", " . ");
+    }
+
+    for (let i = 0; i < 3; i++) {
+        data += "<br/>";
+        for (let j = 0; j < 3; j++) {
+            data += board[i][j] + "&nbsp;&nbsp;";
+        }
+    }
+
+    data += "<br/><br/><input type='button' value='Player 1' onclick='changeValueO()'>"
+    data += "<br/><br/><input type='button' value='Player 2' onclick='changeValueX()'>"
+    b.innerHTML = data;
+    function changeValueX() {
+        let positionX = prompt("X: ");
+        let positionY = prompt("Y: ");
+        data = "";
+        board[positionX][positionY] = "X";
+        for (let i = 0; i < 3; i++) {
+            data += "<br/>";
+            for (let j = 0; j < 3; j++) {
+                data += board[i][j] + "&nbsp;&nbsp;&nbsp;&nbsp;";
+            }
+        }
+        data += "<br/><br/><input type='button' value='Player 1' onclick='changeValueO()'>"
+        data += "<br/><br/><input type='button' value='Player 2' onclick='changeValueX()'>"
+        b.innerHTML = "<hr/>" + data;
+        // check();
+    }
+    function changeValueO() {
+        let positionX = prompt("X: ");
+        let positionY = prompt("Y: ");
+        data = "";
+        board[positionX][positionY] = "O";
+        for (let i = 0; i < 3; i++) {
+            data += "<br/>";
+            for (let j = 0; j < 3; j++) {
+                data += board[i][j] + "&nbsp;&nbsp;&nbsp;&nbsp;";
+            }
+        }
+        data += "<br/><br/><input type='button' value='Player 1' onclick='changeValueO()'>"
+        data += "<br/><br/><input type='button' value='Player 2' onclick='changeValueX()'>"
+        b.innerHTML = "<hr/>" + data;
+        // check();
+    }
+</script>
+</html>

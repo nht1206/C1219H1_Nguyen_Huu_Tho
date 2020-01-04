@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Từ Điển</title>
+</head>
+<body>
+<script>
+    let vietnamese = ["đi", "chạy", "nhảy"];
+    let english = ["go", "run", "jump"];
+    let word = prompt("Enter your word: ");
+    let result = vietnamese.indexOf(word);
+    if( result !== -1){
+        alert(word + " = " + english[result]);
+    } else {
+        alert("Your word is not found.");
+    }
+</script>
+</body>
+</html>

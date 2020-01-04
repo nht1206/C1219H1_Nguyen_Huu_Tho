@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset=utf-8 />
+    <title>Swap the case of each character of a string</title>
+</head>
+<body>
+<script>
+    let str = prompt("Enter any string: ");
+    let result = [];
+    for(let i = 0; i < str.length; i++){
+        if(str[i] == str[i].toUpperCase()){
+            result.push(str[i].toLowerCase());
+        }
+        else if(str[i] == str[i].toLowerCase()){
+            result.push(str[i].toUpperCase());
+        }
+        else {
+            result.push(str[i]);
+        }
+    }
+    document.write(result.join(""));
+</script>
+</body>
+</html>

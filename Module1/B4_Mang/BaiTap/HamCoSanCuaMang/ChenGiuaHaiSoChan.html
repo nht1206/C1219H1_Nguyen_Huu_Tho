@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset=utf-8 />
+    <title>Insert dashes (-) between even numbers</title>
+</head>
+<body>
+<script>
+    let numbers = "025468";
+    let result = [numbers[0]];
+    for(let i = 1; i < numbers.length; i++){
+        if(numbers[i - 1] % 2 == 0 && numbers[i] % 2 == 0){
+            result.push("-", numbers[i]);
+        }
+        else {
+            result.push(numbers[i]);
+        }
+    }
+    document.write(result.join(""));
+</script>
+</body>
+</html>
