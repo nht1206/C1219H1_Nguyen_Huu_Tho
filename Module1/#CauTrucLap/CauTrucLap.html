@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Validate</title>
+    <style>
+        th, td {
+            padding: 15px;
+            text-align: left;
+        }
+        .color {
+            border: 1px solid darkgray;
+            padding: 30px;
+            margin: 20px;
+            background-color: #4CAF50;
+            border-collapse: collapse;
+        }
+    </style>
+</head>
+<body>
+<fieldset>
+    <legend><h2>Booking Information</h2></legend>
+    <h3> Please enter the information about your booking: </h3>
+    <form>
+        <table class="color">
+            <tr>
+                <th style="background-color: #4CAF50; font-size: 20px; text-align: center" colspan="2">Customer
+                    Information
+                </th>
+                <th style="background-color: #4CAF50; font-size: 20px; text-align: center" colspan="2">Booking
+                    Information
+                </th>
+            </tr>
+            <tr>
+                <td>
+                    Full name:
+                </td>
+                <td>
+                    <input type="text" id="name">
+                </td>
+                <td>
+                    Discount:
+                </td>
+                <td>
+                    <input type="number" id="discount">
+                    <p id="checkDiscount" style="display: none; color: red">Discount is not valid</p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    ID card:
+                </td>
+                <td>
+                    <input type="number" id="idCard">
+                    <p id="checkCard" style="display: none; color: red">ID card is not valid</p>
+                </td>
+                <td>
+                    Quantity:
+                </td>
+                <td>
+                    <input type="number" id="quantity">
+                    <p id="checkQuantity" style="display: none; color: red">Quantity is not valid</p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Birthday:
+                </td>
+                <td>
+                    <input type="text" id="birth">
+                    <p id="checkBirth" style="display: none; color: red">Birthday is not valid</p>
+                </td>
+                <td>
+                    Rent days:
+                </td>
+                <td>
+                    <input type="number" id="rentDays">
+                    <p id="checkDay" style="display: none; color: red">Rent days is not valid</p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Email:
+                </td>
+                <td>
+                    <input type="email" id="mail">
+                    <p id="checkMail" style="display: none; color: red">Mail is not valid</p>
+                </td>
+                <td>
+                    Type of service:
+                </td>
+                <td>
+                    <select id="service" style="width: 100%">
+                        <option value="500">Villa</option>
+                        <option value="300">House</option>
+                        <option value="100">Room</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Address:
+                </td>
+                <td>
+                    <input type="text" id="add">
+                </td>
+                <td>
+                    Type of room:
+                </td>
+                <td>
+                    <select id="room" style="width: 100%">
+                        <option value="Vip">Vip</option>
+                        <option value="Business">Business</option>
+                        <option value="Normal">Normal</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Customer:
+                </td>
+                <td>
+                    <select id="cus" style="width: 100%">
+                        <option value="Diamond">Diamond</option>
+                        <option value="Platinum">Platium</option>
+                        <option value="Gold">Gold</option>
+                        <option value="Silver">Silver</option>
+                        <option value="Member">Member</option>
+                    </select>
+                </td>
+            </tr>
+        </table>
+        <button type="button" onclick="sendData()" style="padding: 10px; margin: 10px; font-size: 20px;
+        background-color: lightgray " content="center">Submit</button>
+    </form>
+</fieldset>
+<div id="display" style="display: none ">
+    <fieldset style="width: 40%">
+        <legend><h3> Customer Information </h3></legend>
+        <table>
+            <tr>
+                <th>Name: </th>
+                <td id="nameDisplay"></td>
+            </tr>
+            <tr>
+                <th>ID card: </th>
+                <td id="idDisplay"></td>
+            </tr>
+            <tr>
+                <th>Email: </th>
+                <td id="emailDisplay"></td>
+            </tr>
+            <tr>
+                <th>Address: </th>
+                <td id="addDisplay"></td>
+            </tr>
+            <tr>
+                <th>Birthday: </th>
+                <td id="birthDisplay"></td>
+            </tr>
+            <tr>
+                <th>Customer type: </th>
+                <td id="cusDisplay"></td>
+            </tr>
+            <tr>
+                <th>Discount: </th>
+                <td id="discountDisplay"></td>
+            </tr>
+            <tr>
+                <th>Quantity: </th>
+                <td id="quantityDisplay"></td>
+            </tr>
+            <tr>
+                <th>Rent days: </th>
+                <td id="dayDisplay" style="display: inline"></td>
+            </tr>
+            <tr>
+                <th>Type of service: </th>
+                <td id="serviceDisplay"></td>
+            </tr>
+            <tr>
+                <th>Type of room: </th>
+                <td id="roomDisplay"></td>
+            </tr>
+            <tr>
+                <th>Price: </th>
+                <td id="priceDisplay"></td>
+            </tr>
+        </table>
+    </fieldset>
+</div>
+<script src="CauTrucLap.js"></script>
+</form>
+</body>
+</html>
