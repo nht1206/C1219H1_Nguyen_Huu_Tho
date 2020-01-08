@@ -64,7 +64,35 @@ function validateBirthday(birth) {
     document.getElementById("checkBirth").style.display = 'none';
     return true;
 }
-
+function standardizeTheString(name) {
+    name = name.split('');
+    while (name[0] === ' ')
+    {
+        name.splice(0, 1);
+    }
+    while (name[name.length - 1] === ' ')
+    {
+        name.splice(name.length - 1, 1);
+    }
+    for (let i = 1; i < name.length - 1; i++){
+        if(name[i] === ' ' && name[i + 1] === ' '){
+            while (name[i + 1] === ' ')
+            {
+                name.splice(i + 1, 1);
+            }
+        }
+    }
+    for (let i = 0; i < name.length; i++){
+        name[i] = name[i].toLowerCase();
+    }
+    name[0] = name[0].toUpperCase();
+    for (let i = 1; i < name.length; i++){
+        if (name[i] === ' '){
+            name[i + 1] = name[i + 1].toUpperCase();
+        }
+    }
+    return name.join('');
+}
 
 function sendData() {
     let mail = document.getElementById("mail").value;
@@ -73,6 +101,15 @@ function sendData() {
     let quantity = document.getElementById("quantity").value;
     let rentDays = document.getElementById("rentDays").value;
     let birthDay = document.getElementById("birth").value;
+    let name = document.getElementById("name").value;
+
+    if(name === ''){
+        document.getElementById("checkName").style.display = 'inline';
+        return;
+    } else {
+        document.getElementById("checkName").style.display = 'none';
+        document.getElementById("name").value = standardizeTheString(name);
+    }
 
     if (isNaN(parseInt(discount)) || parseInt(discount) < 0) {
         document.getElementById("checkDiscount").style.display = 'inline';
