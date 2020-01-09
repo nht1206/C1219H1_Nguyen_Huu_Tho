@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hình tròn</title>
+</head>
+<body>
+<script>
+    class Circle {
+        constructor(radius) {
+            this.radius = radius;
+        }
+        getRadius = () => {
+            return this.radius;
+        }
+        setRadius = (radius) => {
+            this.radius = radius;
+        }
+        getArea = () => {
+            return Math.PI * radius * radius;
+        }
+    }
+    let circle = new Circle(2);
+    let radius = circle.getRadius(); // 2
+
+    let area = circle.getArea(); // 12.566370614359172
+    alert("radius: " + radius + "; area: " + area);
+</script>
+</body>
+</html>
