@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hình chữ nhật</title>
+</head>
+<body>
+<canvas id="myCanvas" width="1368px" height="768px" style="border:1px solid #d3d3d3;"></canvas>
+<script>
+    let ctx = document.getElementById("myCanvas").getContext("2d");
+
+    class Rectangle {
+        constructor(width, height) {
+            this.width = width;
+            this.height = height;
+        }
+
+        calculatePerimeter() {
+            return (this.width + this.height) * 2;
+        }
+
+        calculateArea() {
+            return this.width * this.height;
+        }
+        drawRectangle(ctx) {
+            ctx.fillStyle = "#e177ff";
+            ctx.fillRect(600, 0, this.width, this.height);
+        }
+    }
+    let width = prompt("Enter the width of rectangle: ");
+    let height = prompt("Enter the height of rectangle: ");
+    let rectangle = new Rectangle(width, height);
+    rectangle.drawRectangle(ctx);
+</script>
+</body>
+</html>
