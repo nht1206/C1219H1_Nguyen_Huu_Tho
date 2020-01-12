@@ -33,7 +33,11 @@ function addNewCustomer() {
 function deleteCustomer() {
     showCustomers();
     indexOfCustomer = prompt("Enter customer position to delete: ");
-    arrNameCustomers.splice(indexOfCustomer - 1, 1);
+    if (indexOfCustomer <= 0 || indexOfCustomer > arrNameCustomers.length){
+        alert("The position is not exist.");
+    } {
+        arrNameCustomers.splice(indexOfCustomer - 1, 1);
+    }
     showCustomers();
 }
 
