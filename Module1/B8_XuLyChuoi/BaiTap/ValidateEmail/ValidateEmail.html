@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Validate Email</title>
+</head>
+<body>
+
+</body>
+<script>
+    function isEmail(mail) {
+        regexp = /^[A-Za-z0-9]+[A-Za-z0-9]*@[A-Za-z0-9]+(\.[A-Za-z0-9]+)$/;
+        if (regexp.test(mail)){
+            return true;
+        }
+        return false;
+    }
+    console.log(isEmail("nghuutho4@gmail.com"));
+    console.log(isEmail("@#abc@gmail.com"));
+</script>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Xử lý chuỗi</title>
+</head>
+<body>
+<script>
+    function isFirstLetterUpperCase(str){
+        regexp = /^[A-Z]/;
+        if (regexp.test(str)) {
+            console.log("String's first character is uppercase");
+        } else {
+            console.log("String's first character is not uppercase");
+        }
+    }
+    isFirstLetterUpperCase('Abcd');
+    isFirstLetterUpperCase('abcd');
+</script>
+</body>
+</html>
