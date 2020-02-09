@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Đếm số lần xuất hiện</title>
+</head>
+<body>
+<script>
+    function binSearch(arr, data) {
+        for (let i = 0; i < arr.length; ++i) {
+            if (arr[i] == data) {
+                return i;
+            }
+        }
+        return -1;
+    }
+    function count(arr, data) {
+        let count = 0;
+        let position = binSearch(arr, data);
+        if (position > -1) {
+            ++count;
+            for (let i = position-1; i > 0; --i) {
+                if (arr[i] == data) {
+                    ++count;
+                }
+                else {
+                    break;
+                }
+            }
+
+            for (let i = position+1; i < arr.length; ++i) {
+                if (arr[i] == data) {
+                    ++count;
+                }
+                else {
+                    break;
+                }
+            }
+        } //end if
+        return count;
+    }
+    function insertionSort(arr){
+        for (let i = 0; i < arr.length; i++){
+            for (let j = i + 1; j < arr.length; j++){
+                if (arr[i] > arr[j]){
+                    let temp = arr[i];
+                    arr[i] = arr[j];
+                    arr[j] = temp;
+                }
+            }
+        }
+    }
+    function dispArr(arr) {
+        for (var i = 0; i < arr.length; ++i) {
+            document.write(arr[i] + " ");
+            if(i%10==9){
+                document.write("<br/>");
+            }
+        }
+        if(i%10!=0){
+            document.write("<br/>");
+        }
+    }
+
+    let nums = [];
+    for(let i = 0; i < 100; ++i){
+        nums[i] = Math.floor(Math.random() * 101);
+    }
+    insertionSort(nums);
+    dispArr(nums);
+    document.write("<br/>");
+    let val = parseInt(prompt("Enter a value to count: "));
+    let retVal = count(nums, val);
+    document.write("Found " + retVal + " occurrences of " + val + ".");
+</script>
+</body>
+</html>
