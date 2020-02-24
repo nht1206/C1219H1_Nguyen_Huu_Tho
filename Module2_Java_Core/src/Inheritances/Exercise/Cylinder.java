@@ -22,15 +22,15 @@ public class Cylinder extends Circle {
 
     @Override
     public double getArea() {
-        return 2*super.getArea() + super.getPerimeter()*this.height;
+        return 2 * super.getArea() + super.getPerimeter() * this.height;
     }
 
     public double getVolume() {
-        return super.getArea()*this.height;
+        return super.getArea() * this.height;
     }
 
     public String toString() {
-        return "A cylinder with color: " + super.getColor()+ " and radius: " + super.getRadius()+ " , height: " + this.height + " area: " + this.getArea()+ " volume: "+this.getVolume();
+        return "A cylinder with color: " + super.getColor() + " and radius: " + super.getRadius() + " , height: " + this.height + " area: " + this.getArea() + " volume: " + this.getVolume();
     }
 
     public static void main(String[] args) {
@@ -44,7 +44,7 @@ public class Cylinder extends Circle {
         Circle cylinder = new Cylinder();
         System.out.println(cylinder);
 
-        Cylinder cylinder1 = new Cylinder("yellow", 2.5 , 4.0);
+        Cylinder cylinder1 = new Cylinder("yellow", 2.5, 4.0);
         System.out.println(cylinder1);
     }
 }

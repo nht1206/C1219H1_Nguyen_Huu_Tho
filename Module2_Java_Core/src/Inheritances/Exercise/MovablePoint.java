@@ -35,13 +35,13 @@ public class MovablePoint extends Point {
         this.ySpeed = ySpeed;
     }
 
-    public void setSpeed(float xSpeed, float ySpeed){
+    public void setSpeed(float xSpeed, float ySpeed) {
         this.xSpeed = xSpeed;
         this.ySpeed = ySpeed;
     }
 
-    public float[] getSpeed(){
-        float arr[] = {this.xSpeed,this.ySpeed};
+    public float[] getSpeed() {
+        float arr[] = {this.xSpeed, this.ySpeed};
         return arr;
     }
 
@@ -50,13 +50,13 @@ public class MovablePoint extends Point {
     }
 
     public MovablePoint move() {
-        super.setX(super.getX()+this.xSpeed);
-        super.setY(super.getY()+this.ySpeed);
+        super.setX(super.getX() + this.xSpeed);
+        super.setY(super.getY() + this.ySpeed);
         return this;
     }
 
     public static void main(String[] args) {
-        MovablePoint movablePoint = new MovablePoint(1,2,3,4);
+        MovablePoint movablePoint = new MovablePoint(1, 2, 3, 4);
         System.out.println(movablePoint.toString());
         System.out.println(movablePoint.move().toString());
 

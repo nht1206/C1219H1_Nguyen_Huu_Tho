@@ -44,17 +44,17 @@ public class Triangle extends Shape {
     }
 
     public double getArea() {
-        double p = (side1+side2+side3)/2;
-        return Math.pow((p*(p-side1)*(p-side2)*(p-side3)),0.5);
+        double p = (side1 + side2 + side3) / 2;
+        return Math.pow((p * (p - side1) * (p - side2) * (p - side3)), 0.5);
     }
 
     public double getPerimeter() {
-        return (side1+side2+side3);
+        return (side1 + side2 + side3);
     }
 
     @Override
     public String toString() {
-        return "A Triangle with perimeter: " + this.getPerimeter() + " area: " + this.getArea() + " and color: "+super.getColor();
+        return "A Triangle with perimeter: " + this.getPerimeter() + " area: " + this.getArea() + " and color: " + super.getColor();
     }
 
     public static void main(String[] args) {

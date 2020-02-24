@@ -21,12 +21,12 @@ public class Point3D extends Point2D {
     }
 
     public void setXYZ(float x, float y, float z) {
-        super.setXY(x,y);
+        super.setXY(x, y);
         this.z = z;
     }
 
     public float[] getXYZ() {
-        float array[] = {super.getX(),super.getY(),this.z};
+        float array[] = {super.getX(), super.getY(), this.z};
         return array;
     }
 
@@ -35,10 +35,10 @@ public class Point3D extends Point2D {
     }
 
     public static void main(String[] args) {
-        Point2D point2D = new Point2D(2.3f,4.6f);
+        Point2D point2D = new Point2D(2.3f, 4.6f);
         System.out.println(point2D);
         Point3D point3D = new Point3D();
-        Point2D point3D1 = new Point3D(1.0f, 2,5);
+        Point2D point3D1 = new Point3D(1.0f, 2, 5);
         System.out.println(point3D);
         System.out.println(point3D1);
     }
