@@ -53,7 +53,7 @@ public class Fan {
 
     @Override
     public String toString() {
-        if (this.on){
+        if (this.on) {
             return "Fan{" +
                     "speed=" + speed +
                     ", radius=" + radius +

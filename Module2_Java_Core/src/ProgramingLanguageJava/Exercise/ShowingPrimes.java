@@ -12,12 +12,11 @@ public class ShowingPrimes {
         int count = 0;
         int i = 0;
         while (count < 20) {
-            if (CheckingPrimeNumber.isPrimeNumber(i)){
+            if (CheckingPrimeNumber.isPrimeNumber(i)) {
                 System.out.print(i + " ");
                 count++;
             }
             i++;
         }
-
     }
 }

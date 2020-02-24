@@ -3,7 +3,7 @@ package ObjectOrientedProgramming.Exercise;
 import java.util.Date;
 
 public class StopWatch {
-    private long  startTime;
+    private long startTime;
     private long endTime;
 
     public StopWatch(long startTime, long endTime) {
@@ -26,6 +26,7 @@ public class StopWatch {
     public void setEndTime(long endTime) {
         this.endTime = endTime;
     }
+
     public void start() {
         this.startTime = new Date().getTime();
     }

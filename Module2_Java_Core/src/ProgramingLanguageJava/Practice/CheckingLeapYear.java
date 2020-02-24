@@ -8,9 +8,9 @@ public class CheckingLeapYear {
         int year;
         System.out.println("Enter a year: ");
         year = scanner.nextInt();
-        if(year % 4 == 0){
-            if(year % 100 == 0){
-                if(year % 400 == 0){
+        if (year % 4 == 0) {
+            if (year % 100 == 0) {
+                if (year % 400 == 0) {
                     System.out.printf("%d is a leap year", year);
                 } else {
                     System.out.printf("%d is NOT a leap year", year);
@@ -24,11 +24,11 @@ public class CheckingLeapYear {
         boolean isLeapYear = false;
 
         boolean isDivisibleBy4 = year % 4 == 0;
-        if(isDivisibleBy4){
+        if (isDivisibleBy4) {
             boolean isDivisibleBy100 = year % 100 == 0;
-            if(isDivisibleBy100){
+            if (isDivisibleBy100) {
                 boolean isDivisibleBy400 = year % 400 == 0;
-                if(isDivisibleBy400){
+                if (isDivisibleBy400) {
                     isLeapYear = true;
                 }
             } else {
@@ -36,7 +36,7 @@ public class CheckingLeapYear {
             }
         }
 
-        if(isLeapYear){
+        if (isLeapYear) {
             System.out.printf("%d is a leap year", year);
         } else {
             System.out.printf("%d is NOT a leap year", year);
