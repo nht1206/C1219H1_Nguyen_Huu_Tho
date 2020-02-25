@@ -13,6 +13,10 @@ public class Circle {
         this.radius = radius;
     }
 
+    public Circle(double radius) {
+        this.radius = radius;
+    }
+
     public String getColor() {
         return color;
     }
