@@ -28,7 +28,6 @@ public class ImplementLinkedList<E> {
 
     public void add(int index, Object data) {
         Node temp = head;
-
         for (int i = 0; (i < (index - 1)) && (temp.next != null); i++) temp = temp.next;
         Node holder = temp.next;
         temp.next = new Node(data);
@@ -114,7 +113,7 @@ public class ImplementLinkedList<E> {
 
     public ImplementLinkedList<E> clone() {
 
-        ImplementLinkedList<E> clone = new ImplementLinkedList<>();
+        ImplementLinkedList<E> clone = new ImplementLinkedList<E>();
         Node temp = head;
         clone.addFirst(temp.data);
         temp = temp.next;
@@ -129,7 +128,7 @@ public class ImplementLinkedList<E> {
         return numNodes;
     }
     public static void main(String[] args) {
-        ImplementLinkedList<String> ll = new ImplementLinkedList<>(10);
+        ImplementLinkedList<String> ll = new ImplementLinkedList<String>(10);
         ll.addFirst("My");
         ll.addFirst("Tinh");
         ll.addFirst("Tho");

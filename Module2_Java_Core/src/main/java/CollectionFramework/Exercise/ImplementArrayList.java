@@ -43,7 +43,7 @@ public class ImplementArrayList<E> {
     }
 
     public ImplementArrayList<E> clone() {
-        ImplementArrayList<E> array = new ImplementArrayList<>();
+        ImplementArrayList<E> array = new ImplementArrayList<E>();
         for (int i = 0; i < size; i++) {
             array.add(i, (E) elements[i]);
         }
@@ -84,7 +84,7 @@ public class ImplementArrayList<E> {
         return (E) elements[i];
     }
     public static void main(String[] args) {
-        ImplementArrayList<String> arr = new ImplementArrayList<>();
+        ImplementArrayList<String> arr = new ImplementArrayList<String>();
         arr.add(0,"a");
         arr.add(1,"d");
         arr.add(2,"e");
