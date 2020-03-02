@@ -2,9 +2,37 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Câu 1: Sắp xếp mảng</title>
 </head>
 <body>
-$END$
+<script>
+    let array = [];
+    function enterNumber(arr) {
+        for (let i = 0; i < 5; i++){
+            arr[i] = parseInt(prompt("Enter the element " + i));
+        }
+    }
+    function displayArray(arr) {
+        document.write("<br>");
+        for (let i = 0; i < arr.length; i++){
+            document.write(arr[i] + " ");
+        }
+        document.write("<br>");
+    }
+    function insertionSort(arr){
+        for (let i = 0; i < arr.length; i++){
+            for (let j = i + 1; j < arr.length; j++){
+                if (arr[i] > arr[j]){
+                    let temp = arr[i];
+                    arr[i] = arr[j];
+                    arr[j] = temp;
+                }
+            }
+        }
+    }
+    enterNumber(array);
+    insertionSort(array);
+    displayArray(array);
+</script>
 </body>
 </html>

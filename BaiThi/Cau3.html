@@ -2,9 +2,33 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Câu 3: Tìm điểm cao nhất</title>
 </head>
 <body>
-$END$
+<script>
+    let scores = [];
+    function enterScores(scores) {
+        while (true){
+            let data = prompt("Enter score:  "
+                + "\n Enter (q) to quit."
+            );
+            if (data === "q")
+                break;
+            scores.push(data*1);
+        }
+    }
+    function findMaxScore(scores) {
+        let idMax = 0;
+        for (let i = 1; i < scores.length; i++){
+            if (scores[idMax] <= scores[i]){
+                idMax = i;
+            }
+        }
+        return idMax;
+    }
+    enterScores(scores);
+    let indexMax = findMaxScore(scores);
+    document.write("Max = " + scores[indexMax] + " index = " + indexMax + "<br>");
+</script>
 </body>
 </html>

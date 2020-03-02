@@ -2,9 +2,42 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Câu 4: Kiểm tra học lực</title>
 </head>
 <body>
-$END$
+<script>
+    class HocSinh {
+        constructor(soThuTu, hoTen, ngaySinh, diemTB) {
+            this.soThuTu = soThuTu;
+            this.hoTen = hoTen;
+            this.ngaySinh = ngaySinh;
+            this.diemTB = diemTB;
+        }
+    }
+    function hienThiThongTin(hocSinh) {
+        alert("Số thứ tự: " + hocSinh.soThuTu
+            + "\nHọ và tên: " + hocSinh.hoTen
+            + "\nNgày sinh: " + hocSinh.ngaySinh
+            + "\nĐiểm trung bình: " + hocSinh.diemTB
+        );
+    }
+    function kiemTraHocLuc(hocSinh) {
+        if (hocSinh.diemTB > 8){
+            alert(hocSinh.hoTen + " : Học lực giỏi.");
+        } else if (hocSinh.diemTB >= 6.5) {
+            alert(hocSinh.hoTen + " : Học lực khá.");
+        } else if (hocSinh.diemTB >= 5) {
+            alert(hocSinh.hoTen + " : Học lực trung bình.");
+        }
+        else if (hocSinh.diemTB >= 3.5) {
+            alert(hocSinh.hoTen + " : Học lực yếu.");
+        } else {
+            alert(hocSinh.hoTen + " : Học lực kém.");
+        }
+    }
+    let hocSinh = new HocSinh(0, "Nguyen Huu Tho", "12/06/1999", 8.5);
+    hienThiThongTin(hocSinh);
+    kiemTraHocLuc(hocSinh);
+</script>
 </body>
 </html>

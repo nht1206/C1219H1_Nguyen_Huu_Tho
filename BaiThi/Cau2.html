@@ -2,9 +2,19 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Câu 2: Số chính phương</title>
 </head>
 <body>
-$END$
+<script>
+    function isMainNumber(number) {
+       return(Math.pow(Math.sqrt(number),2) === number);
+    }
+    let number = parseInt(prompt("Enter a number: "));
+    if (isMainNumber(number)){
+        alert("This is a main number. ");
+    } else {
+        alert("This is not a main number. ");
+    }
+</script>
 </body>
 </html>
