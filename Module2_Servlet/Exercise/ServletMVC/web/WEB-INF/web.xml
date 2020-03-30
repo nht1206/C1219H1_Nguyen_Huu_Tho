@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+         version="4.0">
+    <servlet>
+        <servlet-name>Servlet User</servlet-name>
+        <servlet-class>com.rhyscode.controllers.ServletUser</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Servlet User</servlet-name>
+        <url-pattern>/user</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>Error Handler</servlet-name>
+        <servlet-class>com.rhyscode.controllers.ErrorHandler</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Error Handler</servlet-name>
+        <url-pattern>/ErrorHandler</url-pattern>
+    </servlet-mapping>
+    <error-page>
+        <error-code>404</error-code>
+        <location>/ErrorHandler</location>
+    </error-page>
+    <servlet>
+        <servlet-name>Authentication</servlet-name>
+        <servlet-class>com.rhyscode.controllers.ServletAuthentication</servlet-class>
+        <init-param>
+            <param-name>adminname</param-name>
+            <param-value>Nguyen Huu Tho</param-value>
+        </init-param>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Authentication</servlet-name>
+        <url-pattern>/logintest</url-pattern>
+    </servlet-mapping>
+    <context-param>
+        <param-name>username</param-name>
+        <param-value>nht1206</param-value>
+    </context-param>
+    <context-param>
+        <param-name>password</param-name>
+        <param-value>admin</param-value>
+    </context-param>
+</web-app>
