@@ -202,20 +202,17 @@ where hop_dong.tong_tien >= 10000000;
 /*
 18.	Xóa những khách hàng có hợp đồng trước năm 2016 (chú ý ràngbuộc giữa các bảng).
 */
-delete from khach_hang
-where id_khach_hang in (
-	select id_hop_dong
-	from hop_dong
-	where year(ngay_lam_hop_dong) = 2016
-);
-delete from hop_dong_chi_tiet
-where id_hop_dong in (
-	select id_hop_dong
-	from hop_dong
-	where year(ngay_lam_hop_dong) = 2016
-);
-delete
-from hop_dong
+ALTER TABLE hop_dong_chi_tiet
+DROP FOREIGN KEY fk_hopdong_hopdongchitiet;
+ALTER TABLE hop_dong_chi_tiet ADD CONSTRAINT fk_hopdong_hopdongchitiet FOREIGN KEY(id_hop_dong)
+REFERENCES hop_dong(id_hop_dong) ON DELETE CASCADE;
+ALTER TABLE hop_dong
+DROP FOREIGN KEY fk_khachhang_hopdong;
+ALTER TABLE hop_dong ADD CONSTRAINT fk_khachhang_hopdong FOREIGN KEY(id_khach_hang)
+REFERENCES khach_hang(id_khach_hang) ON DELETE CASCADE;
+delete khach_hang from  khach_hang
+left join hop_dong on  khach_hang.id_khach_hang = hop_dong.id_khach_hang
+left join hop_dong_chi_tiet   on  hop_dong_chi_tiet.id_hop_dong = hop_dong.id_hop_dong
 where year(ngay_lam_hop_dong) = 2016;
 /*
 19.	Cập nhật giá cho các Dịch vụ đi kèm được sử dụng trên 10 lần trong năm 2019 lên gấp đôi.
