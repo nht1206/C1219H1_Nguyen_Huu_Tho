@@ -204,11 +204,11 @@ where hop_dong.tong_tien >= 10000000;
 */
 ALTER TABLE hop_dong_chi_tiet
 DROP FOREIGN KEY fk_hopdong_hopdongchitiet;
-ALTER TABLE hop_dong_chi_tiet ADD CONSTRAINT fk_hopdong_hopdongchitiet FOREIGN KEY(id_hop_dong)
+ALTER TABLE hop_dong_chi_tiet ADD CONSTRAINT fk_hopdong_hopdongchitiet1 FOREIGN KEY(id_hop_dong)
 REFERENCES hop_dong(id_hop_dong) ON DELETE CASCADE;
 ALTER TABLE hop_dong
 DROP FOREIGN KEY fk_khachhang_hopdong;
-ALTER TABLE hop_dong ADD CONSTRAINT fk_khachhang_hopdong FOREIGN KEY(id_khach_hang)
+ALTER TABLE hop_dong ADD CONSTRAINT fk_khachhang_hopdong1 FOREIGN KEY(id_khach_hang)
 REFERENCES khach_hang(id_khach_hang) ON DELETE CASCADE;
 delete khach_hang from  khach_hang
 left join hop_dong on  khach_hang.id_khach_hang = hop_dong.id_khach_hang
