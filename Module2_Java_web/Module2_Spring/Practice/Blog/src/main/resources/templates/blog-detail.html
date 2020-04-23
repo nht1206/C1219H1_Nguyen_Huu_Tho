@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Blog manager</title>
+</head>
+<body>
+<div>
+    <a th:href="@{/blog-manager}">Back to the list</a>
+</div>
+<hr>
+<h3 th:text="${blog.title}"></h3>
+<hr>
+<p th:text="${blog.content}"></p>
+</body>
+</html>

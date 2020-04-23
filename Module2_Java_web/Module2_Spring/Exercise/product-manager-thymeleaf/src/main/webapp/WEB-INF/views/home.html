@@ -20,9 +20,8 @@
         <th>Price</th>
         <th>Description</th>
         <th>producer</th>
-        <th>Edit</th>
         <th>Delete</th>
-        <th>View</th>
+        <th>Update</th>
     </tr>
     </thead>
     <tbody>
@@ -31,7 +30,6 @@
         <td th:text="${product.getPrice()}"></td>
         <td th:text="${product.getDescription()}"></td>
         <td th:text="${product.getProducer()}"></td>
-        <td><a th:href="@{/product/{id}/edit(id=${product.getId()})}">[Edit]</a></td>
         <td><a th:href="@{/product/{id}/delete(id=${product.getId()})}">[Delete]</a></td>
         <td><a th:href="@{/product/{id}/update(id=${product.getId()})}">[Update]</a></td>
     </tr>
