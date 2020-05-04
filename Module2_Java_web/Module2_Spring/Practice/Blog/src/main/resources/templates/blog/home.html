@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Blog</title>
+</head>
+<body>
+<form method="get">
+    <label for="title">Search by title blog:</label>
+    <input id="title" name="title" />
+    <br>
+    <label for="sort">Sort by post date</label>
+    <input type="checkbox" name="sort" id="sort" value="postDate">
+    <br>
+    <input type="submit" value="Search"/>
+</form><br/>
+<hr>
+<div>
+    <a th:href="@{/blog/create}">Create a new blog</a>
+
+</div>
+<hr>
+<table border="1">
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Category</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="blog : ${blogs}">
+        <td th:text="${blog.id}"></td>
+        <td><a th:href="@{/blog/view/{id}(id = ${blog.getId()})}" th:text="${blog.title}"></a></td>
+        <td th:text="${blog.description}"></td>
+        <td th:text="${blog.getCategory().getNameCategory()}"></td>
+        <td><a th:href="@{/blog/edit/{id}(id = ${blog.getId()})}">[Edit]</a></td>
+        <td><a th:href="@{/blog/delete/{id}(id = ${blog.getId()})}" onclick="return confirm('Are you sure?')">[Delete]</a></td>
+    </tr>
+    </tbody>
+</table>
+<div>
+    <a th:href="@{'/blog'(title=${title}, page=${blogs.number - 1}, sort=${sort})}" th:if="${blogs.hasPrevious()}">Previous</a>
+    <span th:text="${blogs.number + 1}"></span>/<span th:text="${blogs.totalPages}"></span>
+    <a th:href="@{'/blog'(title=${title}, page=${blogs.number + 1}, sort=${sort})}" th:if="${blogs.hasNext()}">Next</a>
+</div>
+</body>
+</html>

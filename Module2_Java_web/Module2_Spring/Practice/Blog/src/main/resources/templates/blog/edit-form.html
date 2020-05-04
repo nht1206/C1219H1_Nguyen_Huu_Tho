@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Blog manager</title>
+</head>
+<body>
+<div>
+    <a th:href="@{/blog}">Back to the list</a>
+</div>
+<hr>
+<form th:action="@{/blog/edit}" th:object="${blog}" method="post">
+    <input type="hidden" th:field="*{id}">
+    <label for="title">Title: </label><br>
+    <input type="text" name="title"
+           th:field="*{title}" id="title" placeholder="Title"><br>
+    <label for="description">Description: </label><br>
+    <textarea name="description"
+              id="description" th:field="*{description}" cols="30" rows="10"></textarea><br>
+    <label for="content">Content: </label><br>
+    <textarea name="content"
+              id="content" th:field="*{content}" cols="30" rows="10"></textarea><br>
+    <select th:field="*{category}">
+        <option th:each="c : ${categories}" th:value="${c.id}" th:text="${c.nameCategory}"></option>
+    </select>
+    <input type="submit" value="Update">
+</form>
+</body>
+</html>

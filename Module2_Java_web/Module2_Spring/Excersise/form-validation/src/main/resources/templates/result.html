@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+  <head>
+    <title>Input User</title>
+  </head>
+
+  <body>
+    <p>Validating successfully!</p>
+    <p th:text="${user.firstName + ' ' + user.lastName}"></p>
+    <p th:text="${'Email: ' + user.email}"></p>
+    <p th:text="${'Birthday: ' + user.birthDay}"></p>
+    <p th:text="${'Phone number: ' + user.phoneNumber}"></p>
+  </body>
+</html>

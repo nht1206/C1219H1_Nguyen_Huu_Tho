@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Blog manager</title>
+</head>
+<body>
+<form th:action="@{/category/create}" th:object="${category}" method="post">
+
+    <label for="categoryName">Category name: </label><br>
+    <input type="text" name="categoryName"
+           th:field="*{nameCategory}" id="categoryName" placeholder="Category name"><br>
+    <input type="submit" value="Create">
+</form>
+</body>
+</html>

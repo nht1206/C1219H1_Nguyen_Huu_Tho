@@ -18,7 +18,11 @@ public class Blog {
     @Column(name = "content", columnDefinition = "text")
     private String content;
     @Column(name = "post_date")
-    private Date PostDate;
+    private Date postDate;
+
+    @ManyToOne
+    @JoinColumn(name = "category_id")
+    private Category category;
 
     public Long getId() {
         return id;
@@ -53,10 +57,18 @@ public class Blog {
     }
 
     public Date getPostDate() {
-        return PostDate;
+        return postDate;
     }
 
     public void setPostDate(Date postDate) {
-        PostDate = postDate;
+        this.postDate = postDate;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
     }
 }
