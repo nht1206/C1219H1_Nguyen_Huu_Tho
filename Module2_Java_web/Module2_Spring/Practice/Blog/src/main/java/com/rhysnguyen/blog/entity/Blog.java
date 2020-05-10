@@ -1,6 +1,5 @@
 package com.rhysnguyen.blog.entity;
 
-import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
 import java.sql.Date;
@@ -20,7 +19,7 @@ public class Blog {
     @Column(name = "post_date")
     private Date postDate;
 
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
     @JoinColumn(name = "category_id")
     private Category category;
 

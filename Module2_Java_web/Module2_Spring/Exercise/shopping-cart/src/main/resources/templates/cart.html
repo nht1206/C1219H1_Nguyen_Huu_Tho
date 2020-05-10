@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Cart</title>
+  </head>
+  <body>
+    <h1>Cart</h1>
+    <table border="1">
+      <tr>
+        <th>Product Name</th>
+        <th>Price</th>
+        <th>Amount</th>
+        <th>Delete</th>
+      </tr>
+      <th:block th:each="product : ${list.keySet()}">
+        <tr>
+          <td th:text="${product.productName}"></td>
+          <td th:text="${product.price}"></td>
+          <td>
+            <select th:id="'selectBox' + ${product.id}" th:onchange="'updateAmount(' + ${product.id} + ')'">
+              <option
+                th:each="i : ${#numbers.sequence(0, 10)}"
+                th:value="${i}"
+                th:text="${i}"
+                th:selected="${i==cart.getAmount(product)}"
+              ></option>
+            </select>
+          </td>
+          <td><a th:href="@{/cart/__${product.id}__ }">Delete</a></td>
+        </tr>
+      </th:block>
+    </table>
+    <a href="/">Product list</a>
+    <script>
+      function updateAmount(productId) {
+        var selectBox = document.getElementById("selectBox" + productId);
+        var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+        window.location.href = '/updateCart/' + productId + "/" + selectedValue;
+        // console.log('/updateCart/' + productId + "/" + selectedValue);
+      }
+    </script>
+  </body>
+</html>

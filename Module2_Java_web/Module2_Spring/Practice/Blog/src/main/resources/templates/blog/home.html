@@ -36,7 +36,7 @@
         <td th:text="${blog.id}"></td>
         <td><a th:href="@{/blog/view/{id}(id = ${blog.getId()})}" th:text="${blog.title}"></a></td>
         <td th:text="${blog.description}"></td>
-        <td th:text="${blog.getCategory().getNameCategory()}"></td>
+        <td th:text="${blog?.category?.nameCategory} ?: 'No category'"></td>
         <td><a th:href="@{/blog/edit/{id}(id = ${blog.getId()})}">[Edit]</a></td>
         <td><a th:href="@{/blog/delete/{id}(id = ${blog.getId()})}" onclick="return confirm('Are you sure?')">[Delete]</a></td>
     </tr>

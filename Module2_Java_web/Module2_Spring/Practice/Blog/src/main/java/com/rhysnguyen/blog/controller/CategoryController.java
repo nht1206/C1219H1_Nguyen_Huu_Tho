@@ -1,7 +1,10 @@
 package com.rhysnguyen.blog.controller;
 
+import java.util.List;
+
 import com.rhysnguyen.blog.entity.Blog;
 import com.rhysnguyen.blog.entity.Category;
+import com.rhysnguyen.blog.service.BlogService;
 import com.rhysnguyen.blog.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,6 +19,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class CategoryController {
     @Autowired
     CategoryService categoryService;
+    @Autowired
+    BlogService blogService;
     @GetMapping
     public String home(Model model) {
         model.addAttribute("categories", categoryService.findAll());
@@ -47,7 +52,15 @@ public class CategoryController {
 
     @GetMapping("/delete/{id}")
     public String processDeleting(@PathVariable Long id) {
-        categoryService.remove(id);
+        Category category = categoryService.findById(id).orElse(null);
+        if (category != null) {
+            List<Blog> blogs = category.getBlogs();
+            for (Blog blog : blogs) {
+                blog.setCategory(null);
+                blogService.save(blog);
+            }
+            categoryService.remove(id);
+        }
         return "redirect:/category";
     }
 }

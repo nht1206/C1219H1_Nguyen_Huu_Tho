@@ -12,7 +12,11 @@ public class Category {
     private Long id;
     private String nameCategory;
 
-    @OneToMany(targetEntity = Blog.class)
+    @OneToMany(targetEntity = Blog.class,
+        cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH},
+        fetch = FetchType.LAZY,
+        mappedBy = "category"
+    )
     private List<Blog> blogs;
 
     public Category() {

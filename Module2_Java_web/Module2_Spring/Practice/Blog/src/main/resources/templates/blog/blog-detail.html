@@ -9,7 +9,7 @@
     <a th:href="@{/blog}">Back to the list</a>
 </div>
 <hr>
-<h5 th:text="${blog.getCategory().getNameCategory()}"></h5>
+<h5 th:text="${blog?.category?.nameCategory} ?: 'No category'"></h5>
 <hr>
 <h3 th:text="${blog.title}"></h3>
 <hr>
