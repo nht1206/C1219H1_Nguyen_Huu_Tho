@@ -2,8 +2,11 @@ package com.codegym.customermanagementrest.model;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 @Table(name = "customer")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

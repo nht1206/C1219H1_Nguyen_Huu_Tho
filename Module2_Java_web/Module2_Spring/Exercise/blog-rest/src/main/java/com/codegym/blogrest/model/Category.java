@@ -1,4 +1,4 @@
-package com.rhysnguyen.blog.entity;
+package com.codegym.blogrest.model;
 
 import javax.persistence.*;
 
@@ -8,7 +8,7 @@ import java.util.List;
 
 @Entity
 @Table(name="category")
-@JsonIgnoreProperties(value = {"blogs"})
+@JsonIgnoreProperties({"blogs"})
 public class Category {
 
     @Id
