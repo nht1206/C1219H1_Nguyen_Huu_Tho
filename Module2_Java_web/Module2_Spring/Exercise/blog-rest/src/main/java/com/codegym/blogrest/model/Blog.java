@@ -18,7 +18,7 @@ public class Blog {
     @Column(name = "post_date")
     private Date postDate;
 
-    @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
+    @ManyToOne
     @JoinColumn(name = "category_id")
     private Category category;
 
