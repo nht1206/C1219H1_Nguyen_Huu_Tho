@@ -1,6 +1,7 @@
 package com.codegym.blogrest.controller;
 
 import com.codegym.blogrest.exception.BlogNotFoundException;
+import com.codegym.blogrest.exception.CategoryNotFoundException;
 import com.codegym.blogrest.model.ApiError;
 
 import org.springframework.http.HttpStatus;
@@ -11,12 +12,12 @@ import org.springframework.web.context.request.WebRequest;
 
 @ControllerAdvice
 public class GlobalExceptionHandler {
-    @ExceptionHandler({BlogNotFoundException.class})
-    public final ResponseEntity<ApiError> handleBlogNotFoundException(final BlogNotFoundException ex, final WebRequest request) {
+    @ExceptionHandler({ BlogNotFoundException.class, CategoryNotFoundException.class })
+    public final ResponseEntity<ApiError> handleBlogNotFoundException(final Exception ex, final WebRequest request) {
         final ApiError apiError = new ApiError();
         apiError.setStatus(HttpStatus.NOT_FOUND);
         apiError.setMessage(ex.getMessage());
-        return new ResponseEntity<>(apiError, HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(apiError, HttpStatus.NOT_FOUND); 
     }
 
     @ExceptionHandler

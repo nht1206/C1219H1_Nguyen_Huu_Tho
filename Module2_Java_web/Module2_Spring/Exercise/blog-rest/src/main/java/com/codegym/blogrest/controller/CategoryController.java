@@ -4,7 +4,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-import com.codegym.blogrest.model.ApiError;
+import com.codegym.blogrest.exception.CategoryNotFoundException;
 import com.codegym.blogrest.model.Category;
 import com.codegym.blogrest.service.CategoryService;
 
@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+
 
 
 
@@ -32,21 +33,32 @@ public class CategoryController {
     }
 
     @GetMapping(value = "")
-    public ResponseEntity<Object> getAllCategories() {
+    public ResponseEntity<Object> getAllCategories() throws CategoryNotFoundException {
         final List<Category> categories = categoryService.findAll();
         if (categories == null) {
-            return new ResponseEntity<>(new ApiError(HttpStatus.NOT_FOUND, "Category not found", ""), HttpStatus.NOT_FOUND);
+            throw new CategoryNotFoundException("Category not found.");
         }
         return new ResponseEntity<>(categories, HttpStatus.OK);
     }
 
-    @GetMapping(value = "/{id}/blog")
-    public ResponseEntity<Object> getMethodName(@PathVariable final Long id) {
+    @GetMapping(value="/{id}")
+    public ResponseEntity<Object> getCategory(@PathVariable final Long id) throws CategoryNotFoundException {
         final Category category = categoryService.findById(id).orElse(null);
-        if (category != null) {
-            return new ResponseEntity<>(category.getBlogs(), HttpStatus.OK);
+        if (category == null) {
+            throw new CategoryNotFoundException("Category not found.");
         }
-        return new ResponseEntity<>(new ApiError(HttpStatus.NOT_FOUND, "Category not found", ""), HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(category, HttpStatus.OK);
+    }
+    
+
+    @GetMapping(value = "/{id}/blog")
+    public ResponseEntity<Object> getMethodName(@PathVariable final Long id) throws CategoryNotFoundException {
+        final Category category = categoryService.findById(id).orElse(null);
+        if (category == null) {
+            throw new CategoryNotFoundException("Category not found.");
+        }
+
+        return new ResponseEntity<>(category.getBlogs(), HttpStatus.OK);
     }
 
     @PostMapping(value="")

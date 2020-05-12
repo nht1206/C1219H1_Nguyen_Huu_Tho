@@ -3,7 +3,6 @@ package com.codegym.blogrest.controller;
 import java.sql.Date;
 
 import com.codegym.blogrest.exception.BlogNotFoundException;
-import com.codegym.blogrest.model.ApiError;
 import com.codegym.blogrest.model.Blog;
 import com.codegym.blogrest.service.BlogService;
 
