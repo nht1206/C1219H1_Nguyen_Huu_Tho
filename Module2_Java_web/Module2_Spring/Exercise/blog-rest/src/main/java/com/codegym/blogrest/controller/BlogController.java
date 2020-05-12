@@ -2,6 +2,7 @@ package com.codegym.blogrest.controller;
 
 import java.sql.Date;
 
+import com.codegym.blogrest.exception.BlogNotFoundException;
 import com.codegym.blogrest.model.ApiError;
 import com.codegym.blogrest.model.Blog;
 import com.codegym.blogrest.service.BlogService;
@@ -34,10 +35,10 @@ public class BlogController {
         return new ResponseEntity<>(blogService.findAll(), HttpStatus.OK);
     }
     @GetMapping(value="/{id}")
-    public ResponseEntity<Object> getBlog(@PathVariable final Long id) {
+    public ResponseEntity<Object> getBlog(@PathVariable final Long id) throws BlogNotFoundException {
         final Blog blog = blogService.findById(id);
         if (blog == null) {
-            return  new ResponseEntity<>(new ApiError(HttpStatus.NOT_FOUND, "Blog not found", "") , HttpStatus.NOT_FOUND);
+            throw new BlogNotFoundException("Blog not found");
         }
         return new ResponseEntity<>(blog, HttpStatus.OK);
     }

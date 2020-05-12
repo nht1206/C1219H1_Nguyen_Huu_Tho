@@ -1,5 +1,6 @@
 package com.codegym.blogrest.model;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -24,7 +25,11 @@ public class ApiError {
     }
 
 
-    public HttpStatus getStatus() {
+    public ApiError() {
+	}
+
+
+	public HttpStatus getStatus() {
         return this.status;
     }
 
@@ -46,6 +51,13 @@ public class ApiError {
 
     public void setErrors(List<String> errors) {
         this.errors = errors;
+    }
+
+    public void setError(String error) {
+        if (this.errors == null) {
+            this.errors = new ArrayList<>();
+        }
+        this.errors.add(error);
     }
 
 
