@@ -1,0 +1,25 @@
+body {
+    margin: 0
+  }
+  .navbar {
+    background-color: #333;
+    padding: 10px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+  }
+  
+  .navbar a {
+    text-decoration: none;
+    display: inline-block;
+    width: 50px;
+    padding: 5px;
+    margin-left: 5px;
+    color: #FFFF
+  }
+  
+  .main {
+    margin-top: 50px;
+    height: 1000px;
+  }
+  

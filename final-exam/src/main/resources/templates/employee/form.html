@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+</head>
+<body>
+<h2>Create employee</h2>
+<form th:fragment="employee-form(action)"
+      th:action="@{/} + ${action}"
+      method="post"
+      class="col-md-6"
+      th:object="${employee}"
+>
+    <div class="form-group">
+        <label for="employeeCode">Employee Code</label>
+        <input
+                th:field="*{employeeCode}"
+                type="text"
+                class="form-control"
+                th:classappend="${#fields.hasErrors('employeeCode')} ? 'is-invalid' : ''"
+                th:readonly="${action == 'update'}"
+                id="employeeCode"
+        />
+        <div
+                th:if="${#fields.hasErrors('employeeCode')}"
+                th:errors="*{employeeCode}"
+                class="invalid-feedback"
+        ></div>
+    </div>
+    <div class="form-group">
+        <label for="fullName">Full name</label>
+        <input
+                th:field="*{fullName}"
+                type="text"
+                class="form-control"
+                th:classappend="${#fields.hasErrors('fullName')} ? 'is-invalid' : ''"
+                id="fullName"
+        />
+        <div
+                th:if="${#fields.hasErrors('fullName')}"
+                th:errors="*{fullName}"
+                class="invalid-feedback"
+        ></div>
+    </div>
+    <div class="form-group">
+        <label for="gender">Gender</label>
+        <select
+                th:field="*{gender}"
+                class="form-control"
+                th:classappend="${#fields.hasErrors('gender')} ? 'is-invalid' : ''"
+                id="gender"
+        >
+                <option value="Nam">Nam</option>
+                <option value="Nữ">Nữ</option>
+        </select>
+        <div
+                th:if="${#fields.hasErrors('gender')}"
+                th:errors="*{gender}"
+                class="invalid-feedback"
+        ></div>
+    </div>
+    <div class="form-group">
+        <label for="dateOfBirth">Date of Birth</label>
+        <input
+                th:field="*{dateOfBirth}"
+                type="text"
+                class="form-control"
+                th:classappend="${#fields.hasErrors('dateOfBirth')} ? 'is-invalid' : ''"
+                id="dateOfBirth"
+        />
+        <div
+                th:if="${#fields.hasErrors('dateOfBirth')}"
+                th:errors="*{dateOfBirth}"
+                class="invalid-feedback"
+        ></div>
+    </div>
+    <div class="form-group">
+        <label for="mail">Email</label>
+        <input
+                th:field="*{email}"
+                type="text"
+                class="form-control"
+                th:classappend="${#fields.hasErrors('email')} ? 'is-invalid' : ''"
+                id="mail"
+        />
+        <div
+                th:if="${#fields.hasErrors('email')}"
+                th:errors="*{email}"
+                class="invalid-feedback"
+        ></div>
+    </div>
+
+    <div class="form-group">
+        <label for="idCardNumber">Identity card number</label>
+        <input
+                th:field="*{idCardNumber}"
+                type="text"
+                class="form-control"
+                th:classappend="${#fields.hasErrors('idCardNumber')} ? 'is-invalid' : ''"
+                id="idCardNumber"
+        />
+        <div
+                th:if="${#fields.hasErrors('idCardNumber')}"
+                th:errors="*{idCardNumber}"
+                class="invalid-feedback"
+        ></div>
+    </div>
+    <div class="form-group">
+        <label for="phoneNumber">Contact number</label>
+        <input
+                th:field="*{phoneNumber}"
+                type="text"
+                class="form-control"
+                th:classappend="${#fields.hasErrors('phoneNumber')} ? 'is-invalid' : ''"
+                id="phoneNumber"
+        />
+        <div
+                th:if="${#fields.hasErrors('phoneNumber')}"
+                th:errors="*{phoneNumber}"
+                class="invalid-feedback"
+        ></div>
+    </div>
+    <div class="form-group">
+        <label for="address">Address</label>
+        <input
+                th:field="*{address}"
+                type="text"
+                class="form-control"
+                th:classappend="${#fields.hasErrors('address')} ? 'is-invalid' : ''"
+                id="address"
+        />
+        <div
+                th:if="${#fields.hasErrors('address')}"
+                th:errors="*{address}"
+                class="invalid-feedback"
+        ></div>
+    </div>
+    <div class="form-group">
+        <label for="employeeGroup">Employee Group</label>
+        <select
+                th:field="*{employeeGroup}"
+                class="custom-select"
+                th:classappend="${#fields.hasErrors('employeeGroup')} ? 'is-invalid' : ''"
+                id="employeeGroup"
+                required
+        >
+            <option
+                    th:each="employeeGroup : ${employeeGroups}"
+                    th:value="${employeeGroup.id}"
+                    th:text="${employeeGroup.name}"
+            ></option>
+        </select>
+        <div
+                th:if="${#fields.hasErrors('employeeGroup')}"
+                th:errors="*{employeeGroup}"
+                class="invalid-feedback"
+        ></div>
+    </div>
+    <button class="btn btn-primary" type="submit" th:text="${action == 'create'} ? 'Create' : 'Update'"></button>
+</form>
+</body>
+</html>

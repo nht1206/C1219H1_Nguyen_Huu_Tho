@@ -1,0 +1,65 @@
+header {
+  position: relative;
+}
+.shopping-mall {
+  position: absolute;
+  bottom: 20px;
+  font-variant: small-caps;
+  left: 0;
+}
+
+.shopping-mall > h1 {
+  font-family: Impact;
+  font-size: 50px;
+  letter-spacing: 0.3px;
+  text-shadow: 0 0 2px black;
+  color: white;
+  border-bottom: 2px dotted black;
+}
+
+.shopping-mall > h5 {
+  margin-top: 5px;
+  letter-spacing: 0.5px;
+  font-size: 15px;
+}
+
+.language > a {
+  margin-left: 10px;
+  text-decoration: none;
+}
+
+.language > a:hover {
+  color: white;
+}
+
+.language > a.active {
+  color: white;
+}
+
+.card {
+  margin-top: 10px;
+}
+
+.shopping-cart {
+  padding: 10px;
+}
+
+.shopping-cart ul {
+  padding: 0px;
+  margin: 0px;
+  list-style: none;
+  font-variant: small-caps;
+}
+
+.search-box {
+  width: 100%;
+  padding: 10px;
+}
+
+.search-box input[type="search"] {
+  width: 100%;
+}
+
+footer {
+  text-align: center;
+}

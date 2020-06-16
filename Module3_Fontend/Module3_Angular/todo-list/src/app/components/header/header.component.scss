@@ -1,0 +1,16 @@
+.icon-wrapper {
+    width: 40px;
+    height: 45px;
+    font-size: 40px;
+    color: gray;
+    background: white;
+    cursor: pointer;
+    transition: 250ms all ease-in-out;
+    &:hover {
+        color: black;
+    }
+}
+
+app-todo-input {
+    width: 100%;
+}

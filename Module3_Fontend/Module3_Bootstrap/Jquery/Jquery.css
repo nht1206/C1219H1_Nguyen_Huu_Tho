@@ -1,0 +1,11 @@
+hr .dashed {
+
+    border-top: 2px dashed #999;
+}
+
+.jumbotron {
+    width: 100%;
+    height: 10%;
+    align-content: center;
+    padding-top: 20px;
+}

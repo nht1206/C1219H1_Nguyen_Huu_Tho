@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+
+<head th:replace="fragments/head.html :: head(title='Dashboard')">
+</head>
+<body>
+    <nav th:replace="fragments/nav-bar.html :: nav-bar(page = 'dashboard')"></nav>
+    <div class="container-fluid">
+        <nav th:replace="fragments/side-bar.html :: side-bar(current = 'home')">
+        </nav>
+    </div>
+    <th:block th:replace="fragments/head.html :: js">
+    </th:block>
+</body>
+
+</html>

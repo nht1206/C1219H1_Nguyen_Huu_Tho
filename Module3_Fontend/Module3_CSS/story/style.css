@@ -1,0 +1,116 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+.header {
+    overflow: hidden;
+    background-color: #f0f0f0;
+    padding: 20px;
+}
+
+.header a.logo {
+    font-size: 25px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #82c4c3
+}
+
+.header-right {
+    float: right;
+    width: 50%;
+}
+
+.search-container input[type=text] {
+    padding: 6px;
+    font-size: 17px;
+    border: none;
+    width: 80%;
+}
+
+.search-container button {
+    padding: 6px 10px;
+    float: right;
+    width: calc(20% - 13px)
+}
+
+.navbar {
+    overflow: hidden;
+    background-color: #e9e9e9;
+}
+.navbar a {
+    display: block;
+    float: left;
+    text-decoration: none;
+    text-align: center;
+    font-size: 17px;
+    padding: 5px 16px;
+    border-radius: 8px;
+    margin-left: 15px;
+    color: #3f3f44;
+    font-weight: bold;
+}
+
+.navbar a:hover {
+    background-color: #82c4c3;
+    color: #fff;
+}
+
+.sidebar {
+    height: 100%;
+    width: 10%;
+    position: sticky;
+    top: 0;
+    overflow-x: hidden;
+    z-index: 1;
+    padding-top: 20px;
+    left: 0;
+    text-align: center;
+    float: left;
+}
+
+.sidebar a {
+    padding: 6px 8px 6px 16px;
+    margin: 5px 0;
+    display: block;
+    text-decoration: none;
+    color: #3f3f44;
+}
+
+.sidebar a:hover {
+    background-color: #82c4c3;
+    color: #fff;
+}
+
+.content {
+    margin-left: 10%;
+    width: calc(100% - 10% - 100px);
+    height: 100%;
+    padding: 50px;
+}
+
+.books::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.book-item {
+    float: left;
+    width: calc(20% - 10px);
+    margin: 5px;
+    text-align: center;
+}
+
+.book-item img {
+    width: calc(100% - 10px);
+    margin: 5px;
+}
+
+.book-item a {
+    text-decoration: none;
+    color: #ec823a;
+}
+
+.book-item a:hover {
+    color: #3f3f44;
+}

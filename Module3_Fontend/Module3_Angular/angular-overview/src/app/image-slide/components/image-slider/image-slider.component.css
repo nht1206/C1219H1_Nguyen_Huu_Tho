@@ -1,0 +1,12 @@
+:host {
+    display: block;
+}
+
+.slider-container {
+    overflow: hidden;
+}
+
+.slider-container img {
+    max-width: 100%;
+    display: block;
+}
