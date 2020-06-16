@@ -1,5 +1,5 @@
 <div style="text-align: center;">
-    <form [formControl]="postForm" (ngSubmit)="onSubmit()">
+    <form [formGroup]="postForm" (ngSubmit)="onSubmit()">
         <div>
             <label for="title">Title: </label>
             <input type="text" formControlName="title" />
@@ -14,6 +14,6 @@
         <div *ngIf="postForm.get('body').invalid && postForm.get('body').touched">
             Body is required and min length is 10.
         </div>
-        <button type="button"></button>
+        <button type="submit">Submit</button>
     </form>
 </div>

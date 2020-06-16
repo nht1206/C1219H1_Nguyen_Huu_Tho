@@ -19,8 +19,8 @@ export class BlogComponent implements OnInit {
 
   ngOnInit(): void {
     this.postForm = this.formBuilder.group({
-      title: ['', Validators.required, Validators.min(10)],
-      body: ['', Validators.required, Validators.minLength(10)],
+      title: ['', [Validators.required, Validators.minLength(10)]],
+      body: ['', [Validators.required, Validators.minLength(10)]],
     });
     this.postService.getPosts().subscribe(
       (next) => (this.postList = next),
@@ -45,7 +45,6 @@ export class BlogComponent implements OnInit {
   }
 
   deletePost(id): void {
-    console.log(id);
     const post = this.postList[id];
     this.postService.deletePost(post.id).subscribe(() => {
       this.postList = this.postList.filter((p) => p.id !== post.id);
