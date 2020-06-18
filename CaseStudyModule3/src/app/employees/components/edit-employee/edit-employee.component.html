@@ -1,0 +1,87 @@
+<div class="create-form col-8">
+    <form [formGroup]="inputForm" (ngSubmit)="onSubmit()" novalidate>
+        <div class="form-group">
+            <label for="code">Employee Id</label>
+            <input type="text" formControlName="code" class="form-control" [class.is-invalid]="
+          inputForm.get('code').invalid && inputForm.get('code').touched
+        " id="employeeId" placeholder="Employee id" />
+            <div class="invalid-feedback">
+                Employee id must look like NV-XXXX (X is a number 0 - 9).
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="fullName">Full name</label>
+                <input type="text" formControlName="fullName" class="form-control" [class.is-invalid]="
+            inputForm.get('fullName').invalid &&
+            inputForm.get('fullName').touched
+          " id="fullName" placeholder="Full name" />
+                <div class="invalid-feedback">
+                    Full name is required.
+                </div>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="birthday">Birth day</label>
+                <input type="date" formControlName="birthDay" class="form-control" [class.is-invalid]="
+            inputForm.get('birthDay').invalid &&
+            inputForm.get('birthDay').touched
+          " id="birthDay" placeholder="Birth day" />
+                <div class="invalid-feedback">
+                    Birth day is required.
+                </div>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="email">Email</label>
+                <input type="email" formControlName="email" class="form-control" [class.is-invalid]="
+            inputForm.get('email').invalid && inputForm.get('email').touched
+          " id="email" placeholder="Email" />
+                <div class="invalid-feedback">
+                    Email is invalid.
+                </div>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="phoneNumber">Phone number</label>
+                <input type="text" formControlName="phoneNumber" class="form-control" [class.is-invalid]="
+            inputForm.get('phoneNumber').invalid &&
+            inputForm.get('phoneNumber').touched
+          " id="phoneNumber" placeholder="Phone number" />
+                <div class="invalid-feedback">
+                    Phone number is invalid.
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="identity">Identity card number</label>
+            <input type="text" formControlName="identityCardNumber" class="form-control" [class.is-invalid]="
+          inputForm.get('identityCardNumber').invalid &&
+          inputForm.get('identityCardNumber').touched
+        " id="identity" placeholder="Identity card number" />
+            <div class="invalid-feedback">
+                Identity card number is invalid.
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="address">Address</label>
+            <input type="text" formControlName="address" class="form-control" [class.is-invalid]="
+          inputForm.get('address').invalid && inputForm.get('address').touched
+        " id="address" placeholder="1234 Main St" />
+            <div class="invalid-feedback">
+                Address is required.
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="salary">Salary</label>
+            <input type="number" formControlName="salary" class="form-control" [class.is-invalid]="
+          inputForm.get('salary').invalid && inputForm.get('salary').touched
+        " id="salary" placeholder="Salary" />
+            <div class="invalid-feedback">
+                Salary must be a positive number.
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary" [disabled]="!inputForm.valid">
+      Create
+    </button>
+    </form>
+</div>

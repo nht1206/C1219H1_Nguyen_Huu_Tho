@@ -1,0 +1,59 @@
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">Customers</h1>
+    <div class="btn-toolbar mb-2 mb-md-0">
+        <div class="btn-group mr-2">
+            <button type="button" routerLink="create" class="btn btn-sm btn-outline-secondary">
+        Create new customer
+      </button>
+        </div>
+    </div>
+</div>
+<h2>Customer list</h2>
+<div class="table-responsive">
+    <table class="table table-striped table-sm">
+        <thead>
+            <tr>
+                <th>Customer Id</th>
+                <th>Full name</th>
+                <th>Birth day</th>
+                <th>Identity card number</th>
+                <th>Email</th>
+                <th>Phone number</th>
+                <th>Address</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let customer of customerList$ | async">
+                <td>{{ customer.code }}</td>
+                <td>{{ customer.fullName }}</td>
+                <td>{{ customer.birthDay }}</td>
+                <td>{{ customer.identityCardNumber }}</td>
+                <td>{{ customer.email }}</td>
+                <td>{{ customer.phoneNumber }}</td>
+                <td>{{ customer.address }}</td>
+                <td>
+                    <button type="button" [routerLink]="['edit', customer.id]" class="btn btn-primary btn-edit">
+            Edit
+          </button>
+                    <button type="button" (click)="onDelete(customer.id)" class="btn btn-danger">
+            Delete
+          </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <nav aria-label="...">
+        <ul class="pagination">
+            <li class="page-item">
+                <span class="page-link" (click)="previousPage()">Previous</span>
+            </li>
+            <li class="page-item" [class.active]="currentPage === i" *ngFor="let i of totalPages">
+                <span class="page-link" (click)="jumpToPage(i)">{{ i }}</span>
+            </li>
+            <li class="page-item">
+                <span class="page-link" (click)="nextPage()">Next</span>
+            </li>
+        </ul>
+    </nav>
+</div>
