@@ -1,6 +1,6 @@
 export interface Service {
   id: number;
-  serviceId: string;
+  code: string;
   serviceName: string;
   area: number;
   numberOfFloor: number;

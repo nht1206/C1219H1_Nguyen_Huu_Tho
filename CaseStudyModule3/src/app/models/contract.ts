@@ -1,6 +1,6 @@
 export interface Contract {
   id: number;
-  contractId: string;
+  code: string;
   employeeId: string;
   serviceId: string;
   customerId: string;
