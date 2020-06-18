@@ -1029,5 +1029,15 @@
             "birthDay": "30/10/1992",
             "phoneNumber": "(515) 1377228"
         }
-    ]
+    ],
+    "services": [{
+        "id": 1,
+        "code": "DV-0001",
+        "serviceName": "Test service 1",
+        "area": 25,
+        "numberOfFloor": 3,
+        "maxNumberOfPeople": 5,
+        "price": "$1200",
+        "status": "on"
+    }]
 }

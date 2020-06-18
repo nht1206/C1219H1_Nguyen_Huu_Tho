@@ -5,6 +5,6 @@ export interface Service {
   area: number;
   numberOfFloor: number;
   maxNumberOfPeople: number;
-  price: number;
+  price: string;
   status: string;
 }

@@ -1,3 +1,4 @@
+import { ServiceService } from './app-services/service.service';
 import { CustomerService } from './app-services/customer.service';
 import { EmployeeService } from './app-services/employee.service';
 import { Component } from '@angular/core';
@@ -14,9 +15,11 @@ export class AppComponent {
    */
   constructor(
     private employeeService: EmployeeService,
-    private customerService: CustomerService
+    private customerService: CustomerService,
+    private serviceService: ServiceService
   ) {
     this.employeeService.fetchEmployeeList();
-    customerService.fetchCustomerList();
+    this.customerService.fetchCustomerList();
+    this.serviceService.fetchEmployeeList();
   }
 }
