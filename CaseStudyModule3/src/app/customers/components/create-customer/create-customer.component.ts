@@ -1,5 +1,5 @@
 import { CustomerService } from './../../../app-services/customer.service';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 import { DatePipe } from '@angular/common';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
@@ -16,7 +16,6 @@ export class CreateCustomerComponent implements OnInit {
     private formBuilder: FormBuilder,
     private datePipe: DatePipe,
     private router: Router,
-    private route: ActivatedRoute,
     private customerService: CustomerService
   ) {}
 

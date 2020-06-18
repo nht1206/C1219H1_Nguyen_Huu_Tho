@@ -1,3 +1,4 @@
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -5,12 +6,13 @@ import { ServicesRoutingModule } from './services-routing.module';
 import { ServicesComponent } from './services.component';
 import { CreateServiceComponent } from './components/create-service/create-service.component';
 
-
 @NgModule({
   declarations: [ServicesComponent, CreateServiceComponent],
   imports: [
     CommonModule,
-    ServicesRoutingModule
-  ]
+    ServicesRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+  ],
 })
-export class ServicesModule { }
+export class ServicesModule {}

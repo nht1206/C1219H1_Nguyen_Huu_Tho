@@ -1,1 +1,77 @@
-<p>create-service works!</p>
+<div class="create-form col-8">
+    <form [formGroup]="inputForm" (ngSubmit)="onSubmit()" novalidate>
+        <div class="form-group">
+            <label for="code">Service Id</label>
+            <input type="text" formControlName="code" class="form-control" [class.is-invalid]="
+          inputForm.get('code').invalid && inputForm.get('code').touched
+        " id="code" placeholder="Employee id" />
+            <div class="invalid-feedback">
+                Service id must look like DV-XXXX (X is a number 0 - 9).
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="serviceName">Service name</label>
+                <input type="text" formControlName="serviceName" class="form-control" [class.is-invalid]="
+            inputForm.get('serviceName').invalid &&
+            inputForm.get('serviceName').touched
+          " id="serviceName" placeholder="Service name" />
+                <div class="invalid-feedback">
+                    Service name is required.
+                </div>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="area">Area</label>
+                <input type="number" formControlName="area" class="form-control" [class.is-invalid]="
+            inputForm.get('area').invalid && inputForm.get('area').touched
+          " id="area" placeholder="Area" />
+                <div class="invalid-feedback">
+                    Area is required and must be greater than 0.
+                </div>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="numberOfFloor">Number of floor</label>
+                <input type="number" formControlName="numberOfFloor" class="form-control" [class.is-invalid]="
+            inputForm.get('numberOfFloor').invalid &&
+            inputForm.get('numberOfFloor').touched
+          " id="numberOfFloor" placeholder="Number of floor" />
+                <div class="invalid-feedback">
+                    Number of floor is required and must be greater than 0.
+                </div>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="maxNumberOfPeople">Maximum number of people</label>
+                <input type="number" formControlName="maxNumberOfPeople" class="form-control" [class.is-invalid]="
+            inputForm.get('maxNumberOfPeople').invalid &&
+            inputForm.get('maxNumberOfPeople').touched
+          " id="maxNumberOfPeople" placeholder="Maximum number of people" />
+                <div class="invalid-feedback">
+                    Maximum number of people is required and must be greater than 0.
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="price">Price</label>
+            <input type="number" formControlName="price" class="form-control" [class.is-invalid]="
+          inputForm.get('price').invalid && inputForm.get('price').touched
+        " id="price" placeholder="Price" />
+            <div class="invalid-feedback">
+                Price is required and must be greater than 0.
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="status">Status</label>
+            <input type="text" formControlName="status" class="form-control" [class.is-invalid]="
+          inputForm.get('status').invalid && inputForm.get('status').touched
+        " id="address" placeholder="Status" />
+            <div class="invalid-feedback">
+                Status is required (on or off).
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary" [disabled]="!inputForm.valid">
+      Create
+    </button>
+    </form>
+</div>
