@@ -86,4 +86,18 @@ export class ServiceService {
         this.updateServiceList();
       });
   }
+
+  search(keyword: string) {
+    this.http
+      .get<Service[]>(`${this.apiUrl}/services?q=${keyword}`)
+      .subscribe((next) => {
+        this.serviceList = next;
+        this.getServiceList({});
+        this.updateServiceList();
+      });
+  }
+
+  getServiceByCode(code: string) {
+    return this.serviceList.find((s) => code === s.code);
+  }
 }

@@ -89,4 +89,18 @@ export class CustomerService {
         this.updateCustomerList();
       });
   }
+
+  search(keyword: string) {
+    this.http
+      .get<Customer[]>(`${this.apiUrl}/customers?q=${keyword}`)
+      .subscribe((next) => {
+        this.customerList = next;
+        this.getCustomerList({});
+        this.updateCustomerList();
+      });
+  }
+
+  getCustomerByCode(code: string) {
+    return this.customerList.find((c) => code === c.code);
+  }
 }

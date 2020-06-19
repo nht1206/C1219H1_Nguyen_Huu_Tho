@@ -90,4 +90,14 @@ export class ContractService {
         this.updateContractList();
       });
   }
+
+  search(keyword: string) {
+    this.http
+      .get<Contract[]>(`${this.apiUrl}/contracts?q=${keyword}`)
+      .subscribe((next) => {
+        this.contractList = next;
+        this.getContractList({});
+        this.updateContractList();
+      });
+  }
 }

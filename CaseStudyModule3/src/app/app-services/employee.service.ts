@@ -85,4 +85,18 @@ export class EmployeeService {
         this.updateEmployeeList();
       });
   }
+
+  search(keyword: string) {
+    this.http
+      .get<Employee[]>(`${this.apiUrl}/employees?q=${keyword}`)
+      .subscribe((next) => {
+        this.employeeList = next;
+        this.getEmployeeList({});
+        this.updateEmployeeList();
+      });
+  }
+
+  getEmployeeByCode(code: string) {
+    return this.employeeList.find((e) => code === e.code);
+  }
 }

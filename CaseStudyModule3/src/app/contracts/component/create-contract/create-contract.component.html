@@ -1,0 +1,88 @@
+<div class="row create-form">
+    <div class="col-8">
+        <form [formGroup]="inputForm" (ngSubmit)="onSubmit()" novalidate>
+            <div class="form-group">
+                <label for="employeeId">Employee Id</label>
+                <input type="text" formControlName="employeeId" class="form-control" [class.is-invalid]="
+            inputForm.get('employeeId').invalid &&
+            inputForm.get('employeeId').touched
+          " id="employeeId" placeholder="Employee id" />
+                <div class="invalid-feedback">
+                    Employee id must look like NV-XXXX (X is a number 0 - 9).
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="customerId">Customer Id</label>
+                <input type="text" formControlName="customerId" class="form-control" [class.is-invalid]="
+            inputForm.get('customerId').invalid &&
+            inputForm.get('customerId').touched
+          " id="customerId" placeholder="Customer id" />
+                <div class="invalid-feedback">
+                    Customer id must look like KH-XXXX (X is a number 0 - 9).
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="serviceId">Service Id</label>
+                <input type="text" formControlName="serviceId" class="form-control" [class.is-invalid]="
+            inputForm.get('serviceId').invalid &&
+            inputForm.get('serviceId').touched
+          " id="serviceId" placeholder="Service id" />
+                <div class="invalid-feedback">
+                    Service id must look like DV-XXXX (X is a number 0 - 9).
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="createdOn">Created on</label>
+                    <input type="date" formControlName="createdOn" class="form-control" [class.is-invalid]="
+              inputForm.get('createdOn').invalid &&
+              inputForm.get('createdOn').touched
+            " id="createdOn" placeholder="Created on" />
+                    <div class="invalid-feedback">
+                        Created date is required.
+                    </div>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="endedOn">Ended on</label>
+                    <input type="date" formControlName="endedOn" class="form-control" [class.is-invalid]="
+              inputForm.get('endedOn').invalid &&
+              inputForm.get('endedOn').touched
+            " id="endedOn" placeholder="Ended on" />
+                    <div class="invalid-feedback">
+                        Ended day is required.
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="deposit">Deposit</label>
+                    <input type="number" formControlName="deposit" class="form-control" [class.is-invalid]="
+              inputForm.get('deposit').invalid &&
+              inputForm.get('deposit').touched
+            " id="deposit" placeholder="Deposit" />
+                    <div class="invalid-feedback">
+                        Deposit is required and must be greater than 0.
+                    </div>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="totalPrice">Total price</label>
+                    <input type="number" formControlName="totalPrice" class="form-control" [class.is-invalid]="
+              inputForm.get('totalPrice').invalid &&
+              inputForm.get('totalPrice').touched
+            " id="totalPrice" placeholder="Total price" />
+                    <div class="invalid-feedback">
+                        Total price is required.
+                    </div>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary" [disabled]="!inputForm.valid">
+        Create
+      </button>
+        </form>
+    </div>
+    <div class="col-4">
+        <div *ngFor="let message of errorMessage" class="alert alert-danger" role="alert">
+            {{ message }}
+        </div>
+    </div>
+</div>
