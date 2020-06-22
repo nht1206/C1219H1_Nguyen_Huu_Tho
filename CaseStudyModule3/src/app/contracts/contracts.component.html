@@ -41,7 +41,7 @@
                     <button type="button" (click)="onDelete(contract.id)" class="btn btn-danger btn-delete">
             Delete
           </button>
-                    <button type="button" [routerLink]="['create-detail-contract', contract.id]" class="btn btn-info">
+                    <button type="button" [routerLink]="[contract.id, 'create-contract-detail']" class="btn btn-info">
             Create detail
           </button>
                 </td>

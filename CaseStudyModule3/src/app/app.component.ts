@@ -1,3 +1,4 @@
+import { ContractDetailsService } from './app-services/contract-detail.service';
 import { ContractService } from './app-services/contract.service';
 import { Router } from '@angular/router';
 import { ServiceService } from './app-services/service.service';
@@ -21,12 +22,14 @@ export class AppComponent {
     private employeeService: EmployeeService,
     private customerService: CustomerService,
     private serviceService: ServiceService,
-    private contractService: ContractService
+    private contractService: ContractService,
+    private contractDetailsService: ContractDetailsService
   ) {
     this.employeeService.fetchEmployeeList();
     this.customerService.fetchCustomerList();
     this.serviceService.fetchEmployeeList();
     this.contractService.fetchContractList();
+    this.contractDetailsService.fetchContractDetailList();
   }
 
   onKeywordChange() {
